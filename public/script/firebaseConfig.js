@@ -1,7 +1,7 @@
  // Your web app's Firebase configuration
     // For Firebase JS SDK v7.20.0 and later, measurementId is optional
     var firebaseConfig = {
-        apiKey: "AIzaSyBxuH8ZUtPxDhlXX7Lwku4-adc72FlhRqU",
+        apiKey: "this is a confidential API key" ,
         authDomain: "fit3170-49455.firebaseapp.com",
         databaseURL: "https://fit3170-49455-default-rtdb.firebaseio.com",
         projectId: "fit3170-49455",
