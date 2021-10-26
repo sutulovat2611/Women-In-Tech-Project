@@ -6,3 +6,9 @@ My team and I were responsible for the Forum submodule, Login functionality and 
 
 ## Application link
 https://fit3170-49455.web.app/
+
+## Documentation
+The following documents may be found in the Documentation folder:
+- Maintenance Plan Summary
+- Handover Document 
+- User Guide
