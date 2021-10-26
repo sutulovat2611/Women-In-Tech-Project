@@ -1,0 +1,122 @@
+html,
+body {
+	font-family: "Arial";
+	font-size: 100%;
+	background-color: #E4E4E4;
+}
+
+/* HEADER CSS */
+
+.material-icons {
+	font-size: 36px;
+	top: 8px;
+	position: relative;
+}
+
+.mdl-layout__header-row span {
+	margin-left: 15px;
+	margin-top: 17px;
+}
+
+.mdl-grid {
+	max-width: 1024px;
+	margin: auto;
+}
+
+.mdl-layout__header-row {
+	padding: auto;
+	margin: 0 auto;
+}
+
+.mdl-button .material-icons {
+	top: -1px;
+	margin-right: 5px;
+}
+
+#topheader {
+	background-color: #006DAE;
+}
+
+
+.img-centre {
+	margin-left: auto;
+	margin-right: auto;
+	display: block;
+}
+
+#nav-icons {
+	font-size: 30px;
+	padding-bottom: 20px;
+}
+
+i.icon-teal {
+	color: #006DAE;
+}
+
+i.icon-teal2 {
+	color: #006DAE;
+}
+
+.mdl-navigation__link {
+	font-size: 16px;
+	text-align: left;
+	padding-left: 0;
+	padding-right: 3;
+}
+
+.mdl-grid-body {
+	margin: 0;
+	padding: 0;
+}
+
+#g_translate_icon {
+	font-size: 30px;
+	color: white;
+	padding: 5px 16px;
+}
+
+/* The translation*/
+.modal-content {
+    background-color: #fefefe;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #888;
+    overflow: auto;
+}
+
+#lang_text {
+	display: inline;
+    position:relative;
+    bottom: 0px;
+}
+
+/* small mobile view (375px)*/
+@media all and (max-width: 400px) {
+	/* for glider */
+	.glider {
+		position: absolute;
+		bottom: 7px;
+		height: 55px;
+		width: 37%;
+		background-color: var(--secondary-color);
+		z-index: 1;
+		border-radius: 25px;
+		transition: 0.25s ease-out;
+	}
+	input[id="radio-0"]:checked~.glider {
+		transform: translateX(-5%);
+	}
+
+	input[id="radio-1"]:checked~.glider {
+		transform: translateX(140%);
+		width:25%;
+	}
+	input[id="radio-2"]:checked~.glider {
+		transform: translateX(211%);
+		width:30%;
+	}
+	#tab0, #tab1, #tab2{
+		font-size:16px ;
+	}
+
+}

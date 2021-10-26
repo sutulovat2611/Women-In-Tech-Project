@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Google Tag Manager (must be placed in head tag)-->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-NF4CK22'); //GTM-NF4CK22 is the container ID
+    //console.log(dataLayer)
+    </script>
+    <!-- End Google Tag Manager -->
+
+    <link href="https://vjs.zencdn.net/7.11.4/video-js.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="Recommender">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recommender</title>
+
+    <!-- Disable tap highlight on IE -->
+    <meta name="msapplication-tap-highlight" content="no">
+
+    <!-- Web Application Manifest -->
+    <!--<link rel="manifest" href="manifest.json">-->
+
+    <!-- Add to homescreen for Chrome on Android -->
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="application-name" content="Recommender">
+    <meta name="theme-color" content="#303F9F">
+
+    <!-- Add to homescreen for Safari on iOS -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Recommender">
+    <meta name="apple-mobile-web-app-status-bar-style" content="#303F9F">
+
+    <!-- Tile icon for Win8 -->
+    <meta name="msapplication-TileColor" content="#3372DF">
+    <meta name="msapplication-navbutton-color" content="#303F9F">
+
+    <!-- Material Design Lite -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-pink.min.css">
+    <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+
+    <!-- App Styling -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en">
+    <link rel="stylesheet" href="./css/recommender_main.css">
+    
+    
+    <!--Translation pop-up styling-->
+    <style>
+        .goog-te-banner-frame.skiptranslate {
+        display: none !important;
+        }
+        body {
+        top: 0px !important;
+        }
+        .goog-logo-link {
+        display:none !important;
+        }
+        .trans-section {
+        margin: 100px;
+        }
+    </style>
+
+    <title>Recommender</title>
+    <!-- TODO: Enable First Input Delay polyfill library. -->
+    <script type="text/javascript">
+    !function(n,e)
+    {
+      var t,o,i,c=[],f={passive:!0,capture:!0},r=new Date,a="pointerup",u="pointercancel";
+      function p(n,c)
+      {
+        t||(t=c,o=n,i=new Date,w(e),s())
+      }
+      function s()
+      {
+        o>=0&&o<i-r&&(c.forEach(function(n){n(o,t)}),c=[])
+      }
+      function l(t)
+      {
+        if(t.cancelable)
+        {
+          var o=(t.timeStamp>1e12?new Date:performance.now())-t.timeStamp;
+          "pointerdown"==t.type?function(t,o)
+          {
+            function i()
+            {
+              p(t,o),r()
+            }
+            function c()
+            {
+              r()
+            }
+            function r()
+            {
+              e(a,i,f),e(u,c,f)
+            }
+            n(a,i,f),n(u,c,f)
+          }
+            (o,t):p(o,t)
+        }
+
+      }
+      function w(n)
+      {
+        ["click","mousedown","keydown","touchstart","pointerdown"].forEach(function(e){n(e,l,f)})
+      }
+      w(n),self.perfMetrics=self.perfMetrics||{},self.perfMetrics.onFirstInputDelay=function(n){c.push(n),s()}
+    }
+    (addEventListener,removeEventListener);
+    </script>
+  </head>
+
+  <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+    <!-- Header section -->
+    <header class="mdl-layout__header mdl-color-text--white notranslate" id='topheader'>
+      <div class="mdl-cell mdl-cell--12-col mdl-cell--12-col-tablet mdl-grid">
+         <div class="mdl-layout__header-row mdl-cell mdl-cell--12-col mdl-cell--12-col-tablet mdl-cell--12-col-desktop">
+            <h4> Recommender </h4>
+            <div class="mdl-layout-spacer"></div>
+            <nav class="mdl-navigation" style="position: relative;">
+               <a class="mdl-navigation__link" href="main_page.html">
+                   <img src="./css/images/smaller_home.png" style="width: 110px;
+                   height: 100px;">
+               </a>
+             </nav>
+         </div>
+      </div>
+   </header>
+    
+    <!--Navigation menu-->
+    <div class="mdl-layout__drawer">
+      <br>
+      <img src = "./css/images/logo.png" width=90 height=90 class="img-centre">
+      <br>
+      <span class="mdl-layout-title">Recommender</span>
+      <nav class="mdl-navigation">
+        <a class="mdl-navigation__link" id="translate_btn" onclick="showTranslationModal();"> <img src="./css/images/translate_icon.png" class="nav_icon" id="translate_icon"></img> Translate</a>
+        <a class="mdl-navigation__link" href="./main_page.html"> <img src="./css/images/home_page_icon.png" class="nav_icon" id="home_page_icon"> Home Page</a>
+        <a class="mdl-navigation__link" href="./chatbot.html"> <img src="./css/images/chatbot_icon.png"  class="nav_icon" id="chatbot_icon"> Chat Bot</a>
+        <a class="mdl-navigation__link" href="./recommender_Ui.html"> <img src="./css/images/recommender_icon.png" class="nav_icon" id="recommender_icon"> Recommender</a>
+        <a class="mdl-navigation__link" href="./forum.html"> <img src="./css/images/forum_icon.png" class="nav_icon" id="forum_icon"> Forum Page</a>
+      </nav>
+    </div>
+
+    <body>
+      <!-- Google Tag Manager (noscript) -->
+      <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NF4CK22"
+      height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+      <!-- End Google Tag Manager (noscript) -->
+
+      <main class="mdl-layout__content mdl-color--grey-100">
+        <div class="container">
+          <!-- Button navigation -->
+          <div class="tabs">
+              <!-- Favourite button -->
+              <input type="checkbox" id="radio-0" name="tabs" value="Favourite" onclick='window.location.href = "fav_page_Ui.html"'/>
+              <label class="tab" for="radio-0" id="tab0"><b><img src="./css/images/fav_icon.png" style="height:22px">Favourite</b></label>
+
+              <!-- History button -->
+              <input type="checkbox" id="radio-1" name="tabs" value="History" onclick='window.location.href = "recommender_history_Ui.html"' checked/>
+              <label class="tab" for="radio-1" id="tab1"><b><img src="./css/images/history_icon.png" style="height:22px">History</b></label>
+
+              <!-- Edit skill selection button -->
+              <input type="checkbox" id="radio-2" name="tabs" value="Edit_skill" onclick='window.location.href = "recommender_select_skills.html"'/>
+              <label class="tab" for="radio-2" id="tab2"><b><img src="./css/images/create_post_icon.png" style="height: 22px; width: 15%">Edit skill selection</b></label>
+      
+          </div>
+        </div>
+
+        <div id="messages-card-container" class="mdl-cell mdl-cell--12-col mdl-grid">
+          <div id="recommendation-card" class="mdl-card mdl-shadow--2dp" style="align-items: center; margin-bottom: 20%;">
+            <div class="mdl-card__title" id="upperSectionHeader">Our recommendation for you:</div>
+            <div class="mdl-card__media" id ="my-video" style="background-color: white;"></div>
+            <div class="mdl-card__subtitle-text notranslate" id="videoDescription" style="margin-left: 5%; margin-right: 5%"></div>
+
+            <div class="row">
+              <div class="col-9">
+                <button id="skipPrevious" onclick= "skipToPreviousVideo()" class="mdl-button mdl-js-button mdl-button--fab  mdl-button" style = "margin-bottom: 5%; margin-right: 1%; background-color: transparent;" >
+                  <img src="./css/images/playback_icon.png" style="height:80%">
+                </button>
+                <button id="skipNext" onclick= "skipToNextVideo()" class="mdl-button mdl-js-button mdl-button--fab  mdl-button" style = " margin-bottom: 5%; background-color: transparent;" >
+                  <img src="./css/images/playnext_button.png" style="height:80%">
+                </button>
+                <button onclick= "speakButtonOnClick()"  class="mdl-button mdl-js-button mdl-button--fab  mdl-button" style = "margin-bottom: 5%; background-color: transparent;" >
+                  <img src="./css/images/speaker_icon.png" style="height:80%">
+                </button>
+      
+                <div class="mdl-card__actions mdl-card--border">
+                  <button id= "positiveRating" class="mdl-button mdl-js-button mdl-button--fab  mdl-button" style="background-color: transparent; margin-bottom: 5%;" onclick = "positiveRating()" >
+                      <!-- <i class= "material-icons" style ="margin-top: 50%; margin-left: -6px;">thumb_down</i> -->
+                      <img src="./css/images/button-designs_23.png" style="height:80%">
+                  </button>
+                  <button id= "negativeRating" class="mdl-button mdl-js-button mdl-button--fab mdl-button" style="background-color: transparent; margin-bottom: 5%;" onclick = "negativeRating()" >
+                      <!-- <i class= "material-icons" style ="margin-top: 50%; margin-left: -6px;">thumb_up</i> -->
+                      <img src="./css/images/button-designs_24.png" style="height:80%">
+                  </button>
+      
+                  <button id="favoriteIcon" onclick= "favoriteRating()" class="mdl-button mdl-js-button mdl-button--fab mdl-button" style = "background-color: transparent; margin-bottom: 5%;" >
+                  <!-- <i class= "material-icons" style ="margin-top: 50%; margin-left: -5px; ">favorite_border</i> -->
+                  <img src="./css/images/button-designs_25.png" style="height:80%">
+                  </button>
+      
+                  <button id="forumIcon" onclick= "moveToForum()" class="mdl-button mdl-js-button mdl-button--fab mdl-button" style = "background-color: transparent; margin-bottom: 5%;" >
+                  <!-- <i class= "material-icons" style ="margin-top: 50%; margin-left: -5px; ">favorite_border</i> -->
+                  <img src="./css/images/forum_icon.png" style="height:80%">
+                  </button>
+                </div>
+
+              </div>
+              
+              <!--Snackbar popup for favouriting a video-->
+              <div id="messagePopUp" class="mdl-js-snackbar mdl-snackbar">
+                <div class="mdl-snackbar__text"></div>
+                <button class="mdl-snackbar__action" type="button"></button>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      
+        <!--Translation modal-->
+        <div class="modal" id="myModal" style="text-align:center; position: absolute;z-index:1000; height:120%;">
+          <div id="google_translate_element" style="display: none;"></div>
+            <div class="modal-content">
+              <p style="margin-top: 10%;">
+                  <b>Choose Language:
+                  </b>
+              </p>
+              <hr style="margin: 0;">
+
+              <button id ="lang_butt_id_e" class = "mdl-button mdl-js-button mdl-button--raised lang_butt notranslate" onclick="reset()"
+                  value="English">
+              <label>
+              <span id="lang_text" style="color:white;">English</span>
+              </label>
+              </button>
+
+              <br>
+              <button id ="lang_butt_id_c" class = "mdl-button mdl-js-button mdl-button--raised  lang_butt notranslate" onclick="changeLang(this.value)"
+                  value="Chinese (Simplified)">
+              <label>
+              <span id="lang_text" style="color:white;">中文</span>
+              </label>
+              </button>
+
+              <br>
+              <button id ="lang_butt_id_t" class = "mdl-button mdl-js-button mdl-button--raised  lang_butt notranslate" onclick="changeLang(this.value)"
+                  value="Thai" >
+              <label>
+              <span id="lang_text" style="color:white;">ภาษาไทย</span>
+              </label>
+              </button>
+
+              <br>
+              <button id ="lang_butt_id_m" class = "mdl-button mdl-js-button mdl-button--raised lang_butt notranslate" onclick="changeLang(this.value)"
+                  value="Malay">
+              <label>
+              <span id="lang_text" style="color:white;">Bahasa Melayu</span>
+              </label>
+              </button>
+
+              <br>
+              <br>
+
+              <div>
+                <button class="mdl-button mdl-js-button mdl-button--raised  button-close-modal" id="button-close-modal" onclick="hideTranslationModal()">
+                  Back
+                </button>
+              </div>
+            </div>
+        </div>
+        
+
+      
+      </main>
+
+      <!--JQuery script-->
+      <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+      <!--Google Translate script-->
+      <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit" type="text/javascript"></script>
+      <!--Firebase scripts-->
+      <script src="/__/firebase/7.18.0/firebase-app.js"></script>
+      <script src="/__/firebase/7.18.0/firebase-auth.js"></script>
+      <script src="/__/firebase/7.18.0/firebase-database.js"></script>
+      <script src="/__/firebase/init.js?useEmulator=true"></script>
+      <script src="/__/firebase/8.3.3/firebase-firestore.js"></script>
+      <!--Recommender scripts-->
+      <script src="script/share_video.js"></script>
+      <script src="script/speaker.js"></script>
+      <script src="script/recommender_main.js"></script>
+      <!--Translation script-->
+      <script src="script/translation.js"></script>
+
+    </body>
+  </div>
+</html>

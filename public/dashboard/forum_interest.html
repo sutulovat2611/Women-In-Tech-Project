@@ -1,0 +1,217 @@
+<!doctype html>
+<html lang="en">
+   <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+      <meta name="description" content="">
+      <meta name="author" content="">
+      <link rel="icon" href="favicon.ico">
+      <title>Post Analytics</title>
+      <!-- Fonts CSS -->
+      <link href="https://fonts.googleapis.com/css2?family=Overpass:ital,wght@0,100;0,200;0,300;0,400;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+      <!-- Icons CSS -->
+      <link rel="stylesheet" href="css/feather.css">
+      <!-- Date Range Picker CSS -->
+      <link rel="stylesheet" href="css/daterangepicker.css">
+      <!-- App CSS -->
+      <link rel="stylesheet" href="css/app-light.css" id="lightTheme">
+      <!-- <link rel="stylesheet" href="css/app-dark.css" id="darkTheme" disabled> -->
+      <link rel="stylesheet" href="https://unpkg.com/purecss@2.0.6/build/pure-min.css" integrity="sha384-Uu6IeWbM+gzNVXJcM9XV3SohHtmWE+3VGi496jvgX1jyvDTXfdK+rfZc8C1Aehk5" crossorigin="anonymous">
+      <link rel="stylesheet" href="css/forum_post.css">
+      <link rel="stylesheet" href="css/forum_interest.css">
+   </head>
+   <body class="vertical  light">
+      <div class="wrapper">
+      <nav class="topnav navbar navbar-light">
+         <button type="button" class="navbar-toggler text-muted mt-2 p-0 mr-3 collapseSidebar">
+         <i class="fe fe-menu navbar-toggler-icon"></i>
+         </button>
+      </nav>
+      <aside class="sidebar-left border-right bg-white shadow" id="leftSidebar" data-simplebar>
+         <a href="#" class="btn collapseSidebar toggle-btn d-lg-none text-muted ml-2 mt-3" data-toggle="toggle">
+         <i class="fe fe-x"><span class="sr-only"></span></i>
+         </a>
+         <nav class="vertnav navbar navbar-light">
+            <!-- nav bar -->
+            <div class="w-100 mb-4 d-flex">
+               <a class="navbar-brand mx-auto mt-2 flex-fill text-center">
+               <img src="../css/images/logo.png" width = "100" height = "100">
+               </a>
+            </div>
+            <p class="text-muted nav-heading mt-4 mb-1">
+               <span>Navigation</span>
+            </p>
+            <ul class="navbar-nav flex-fill w-100 mb-2">
+               <li class="nav-item w-100">
+                <a class="nav-link" href="admin_dashboard_landing.html">
+                     <img src="../css/images/home_page_icon.png" width = "35" height = "30">
+                     <!-- <i class="fe fe-help-circle fe-16"></i> -->
+                     <span class="ml-3 item-text">Admin Home Page</span>
+                  </a>
+               </li>
+            </ul>
+         </nav>
+    </aside>
+        <main role="main" class="main-content">
+            <div class="container-fluid">
+                <div class="row justify-content-center">
+                    <div class="col-12">
+
+                        <!-- ROW 1 -->
+                        <div class ="row">
+                            <!-- GRAPH BASED ON A POST -->
+                            <div class="col-md-12 mb-4">
+                                <div class="card shadow" style="height: 100%;">
+                                    <div class="card-header">
+                                        <h4 class="card-title">Total interactions with each interest:</h4>
+                                    </div>
+
+                                      <div class="card-body">
+                                          <div id="mychart"></div>
+                                            <!-- <canvas id="myInterestChart" height="130%"></canvas> -->
+                                      </div><!-- <div class="card-body"> -->
+                                    <br>
+                                </div> <!-- .card shadow-->
+                            </div><!-- .col-md-12 mb-4-->
+                        </div><!-- <div class ="row"> -->
+
+
+                        <!-- ROW 2 -->
+                        <div class="container-fluid">
+                            <div class="row justify-content-center">
+
+                                <div class="card shadow" id="historyCard">
+                                    <div class="card-header">
+                                        <h4 class="card-title">History of posts:</h4>
+                                    </div>
+
+                                    <div class="card-body">
+                                          <h4 class="card-title">interest:</h4>
+
+                                        <div class="row justify-content-center">
+                                            <div class="col-10" >
+                                                <div class="row" >
+                                                    <form class="pure-form pure-form-stacked"  style="width: 30%">
+                                                        <select id="interest">
+                                                        <option value="Browser search">Browser search</option>
+                                                        <option value="Device use">Device use</option>
+                                                        <option value="Email">E-mail</option>
+                                                        <option value="Online collaboration">Online collaboration</option>
+                                                        <option value="Social media use">Social media use</option>
+                                                        <option value="Active listening">Active listening</option>
+                                                        <option value="Effective communication">Effective Communication</option>
+                                                        <option value="Negotiation skill">Negotiation Skill</option>
+                                                        <option value="Persuasion">Persuasion</option>
+                                                        <option value="Relationship management">Relationship Management</option>
+                                                        <option value="Art">Art</option>
+                                                        <option value="Caregiving">Caregiving</option>
+                                                        <option value="Cooking">Cooking</option>
+                                                        <option value="Exercise">Exercise</option>
+                                                        <option value="Professional writing">Professional Writing</option>
+                                                        <option value="Collaboration and teamwork">Collaboration and Teamwork</option>
+                                                        <option value="Critical thinking">Critical Thinking</option>
+                                                        <option value="Entrepreneurship">Entrepreneurship</option>
+                                                        <option value="People and Leadership">People and Leadership</option>
+                                                        <option value="Personal selling">Personal Selling</option>
+                                                        </select>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+                                        <div class="col-12">
+                                            <div class="row " id="posts-rows">
+
+
+                                            </div>
+                                        </div>
+
+
+
+                                    </div>
+                                </div>
+                            </div><!-- <div class="card-body"> -->
+                        </div>  <!-- <div class="card shadow" id="historyCard"> -->
+                    </div> <!-- <div class="col-12"> -->
+                </div><!-- <div class="row justify-content-center"> -->
+             </div> <!-- <div class="container-fluid"> -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      </main>
+
+      <script src="https://www.gstatic.com/firebasejs/8.3.2/firebase-app.js"></script>
+      <!-- TODO: Add SDKs for Firebase products that you want to use
+         https://firebase.google.com/docs/web/setup#available-libraries -->
+      <script src="https://www.gstatic.com/firebasejs/8.3.2/firebase-analytics.js"></script>
+      <script src = "script/firebaseConfig.js"></script>
+      <!-- FIREBAS STUFF I GOT FROM YT-->
+      <script src="/__/firebase/7.18.0/firebase-app.js"></script>
+      <script src="/__/firebase/7.18.0/firebase-auth.js"></script>
+      <script src="/__/firebase/7.18.0/firebase-database.js"></script>
+      <script src="/__/firebase/init.js?useEmulator=true"></script>
+
+
+      <script src="js/jquery.min.js"></script>
+      <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+      <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
+      <link rel="stylesheet" href="../css/jquery-ui-1.13.0/jquery-ui.css">
+
+      <script src="js/popper.min.js"></script>
+      <script src="js/moment.min.js"></script>
+      <script src="js/bootstrap.min.js"></script>
+      <script src="js/simplebar.min.js"></script>
+      <script src='js/daterangepicker.js'></script>
+      <script src='js/jquery.stickOnScroll.js'></script>
+      <script src="js/tinycolor-min.js"></script>
+      <script src="js/config.js"></script>
+      <script src="js/d3.min.js"></script>
+      <script src="js/topojson.min.js"></script>
+      <script src="js/datamaps.all.min.js"></script>
+      <script src="js/datamaps-zoomto.js"></script>
+      <script src="js/datamaps.custom.js"></script>
+      <script src="js/Chart.min.js"></script>
+
+      <script src="script/forum_interest.js"></script>
+      <script>
+         /* defind global options */
+         Chart.defaults.global.defaultFontFamily = base.defaultFontFamily;
+         Chart.defaults.global.defaultFontColor = colors.mutedColor;
+      </script>
+      <script src="js/gauge.min.js"></script>
+      <script src="js/jquery.sparkline.min.js"></script>
+      <script src="js/apexcharts.min.js"></script>
+      <script src="js/apexcharts.custom.js"></script>
+      <script src="js/apps.js"></script>
+      <!-- Global site tag (gtag.js) - Google Analytics -->
+      <script async src="https://www.googletagmanager.com/gtag/js?id=UA-56159088-1"></script>
+
+
+      <script>
+         window.dataLayer = window.dataLayer || [];
+
+         function gtag()
+         {
+           dataLayer.push(arguments);
+         }
+         gtag('js', new Date());
+         gtag('config', 'UA-56159088-1');
+      </script>
+
+   </body>
+   </body>
+</html>

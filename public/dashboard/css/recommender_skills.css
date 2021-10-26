@@ -1,0 +1,13 @@
+#skillInfo{
+    justify-content: center;
+    text-align: center;
+}
+
+#selectedCard{
+  margin-bottom: 25px;
+}
+
+#likeHeader, #dislikeHeader{
+    background-color: #cbcbcb;
+    color: #000;
+}

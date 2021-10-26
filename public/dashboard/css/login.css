@@ -1,0 +1,335 @@
+/* Setting up the page css */
+
+button:hover {
+	cursor: pointer;
+}
+
+button {
+	outline: none !important;
+	border: none;
+	background: transparent;
+}
+
+a:focus {
+	outline: none !important;
+}
+
+a:hover {
+	text-decoration: none;
+	color: #006dae;
+}
+
+input {
+	outline: none;
+	border: none;
+}
+
+
+/* languages page */
+
+.trans-section {
+	margin: 100px;
+	padding: 20px;
+	padding-bottom: 25px;
+	background-color: white;
+	border-radius: 10px;
+	width: 100%;
+	padding: auto;
+	height: 75%;
+}
+
+#content1 {
+	height: 700px;
+	width: 40%;
+	position: fixed;
+	top: 50%;
+	left: 58%;
+	display: flex;
+	/* bring your own prefixes */
+	transform: translate(-75%, -55%);
+}
+
+
+/* log in page */
+
+.wrap-login {
+	width: 100%;
+	border-radius: 10px;
+	padding-left: 55px;
+	padding-right: 55px;
+	padding-top: 65px;
+	padding-bottom: 54px;
+}
+
+.container {
+	margin: 100px;
+	padding: 20px;
+	padding-bottom: 25px;
+	background-color: white;
+	border-radius: 10px;
+	width: 95%;
+	padding: auto;
+	height: 50%;
+}
+
+
+/* signup */
+
+#container-s {
+	margin-top: 10px;
+}
+
+.wrap-s {
+	width: 100%;
+	border-radius: 10px;
+	padding-left: 55px;
+	padding-right: 55px;
+	padding-top: 30px;
+	padding-bottom: 30px;
+}
+
+
+/* terms and conditions */
+
+body {
+	background-color: #006dae;
+}
+
+.terms_card {
+	margin-top: 30px;
+	padding: 20px;
+	padding-bottom: 25px;
+	background-color: white;
+	border-radius: 10px;
+	width: 95%;
+	padding: auto;
+	height: 90%;
+}
+
+.textArea {
+	margin-inline: auto;
+	margin-top: 2%;
+	height: 90%;
+	width: 95%;
+	border: thick solid;
+	border-color: #D2D2D2;
+	overflow-y: scroll;
+}
+
+.tick-warning {
+	color: red;
+}
+
+.mdl-button {
+	text-align: center;
+}
+
+.checkbox-div {
+	margin-inline: auto;
+}
+
+.mdl-card__supporting-text {
+	font-size: 20px;
+	line-height: 1.6;
+}
+
+@media all and (min-width:551px) {
+	.desktop-br {
+		display: inline;
+	}
+}
+
+h4 {
+	font-weight: bold;
+}
+
+h3 {
+	left: auto;
+}
+
+
+/* styling the background and the container of the login form */
+
+@media all and (min-width:600px) {
+	/* laptop */
+	#content1,
+	#container,
+	.terms_card,
+	#container-s {
+		width: 40%;
+	}
+	.terms_card {
+		margin-left: 28%;
+	}
+}
+
+@media only screen and (max-width: 1024px) {
+	/* phone */
+	#content1 {
+		width: 120%;
+		left: 80%;
+	}
+	.terms_card {
+		margin-left: 2%;
+	}
+	#content-box {
+		width: 88%;
+	}
+}
+
+@media screen and (min-width: 1900px) {
+		.trans-section {
+			height: 85%;
+		}
+	}
+
+.title {
+	display: block;
+	font-family: 'Arial';
+	font-weight: bold;
+	font-size: 39px;
+	color: #333333;
+	line-height: 1.2;
+	text-align: center;
+	padding-bottom: 49px;
+}
+
+
+/*Styling input values and container */
+
+.input {
+	font-family: 'Arial';
+	font-size: 16px;
+	color: #333333;
+	line-height: 1.2;
+	display: block;
+	width: 100%;
+	height: 55px;
+	background: transparent;
+	padding: 0 7px 0 43px;
+}
+
+.input_div {
+	width: 100%;
+	position: relative;
+	border-bottom: 2px solid #d9d9d9;
+	margin-bottom: 23px;
+}
+
+.label {
+	font-family: 'Arial';
+	font-size: 16px;
+	color: #333333;
+	line-height: 1.5;
+	padding-left: 7px;
+}
+
+.focus-input_logo {
+	position: absolute;
+	display: block;
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
+	pointer-events: none;
+}
+
+.focus-input_logo::after {
+	content: attr(data-symbol);
+	font-family: Material-Design-Iconic-Font;
+	color: #adadad;
+	font-size: 22px;
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: -moz-box;
+	display: -ms-flexbox;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	position: absolute;
+	height: calc(100% - 20px);
+	bottom: 0;
+	left: 0;
+	padding-left: 13px;
+	padding-top: 3px;
+}
+
+.focus-input_logo::before {
+	content: "";
+	display: block;
+	position: absolute;
+	bottom: -2px;
+	left: 0;
+	width: 0;
+	height: 2px;
+	background: #7f7f7f;
+	-webkit-transition: all 0.4s;
+	-o-transition: all 0.4s;
+	-moz-transition: all 0.4s;
+	transition: all 0.4s;
+}
+
+.input:focus+.focus-input_logo::before {
+	width: 100%;
+}
+
+.has-val.input+.focus-input_logo::before {
+	width: 100%;
+}
+
+.input:focus+.focus-input_logo::after {
+	color: #006dae;
+}
+
+.has-val.input+.focus-input_logo::after {
+	color: #006dae;
+}
+
+
+/*Styling button */
+
+#send-button,
+#login-button {
+	width: 100%;
+	height: 100%;
+	background: #006dae;
+	top: 0;
+	color: white;
+	border-radius: 10px;
+	height: 50px;
+}
+
+#back_btn,
+#back_btn_tc {
+	margin-top: 50px;
+	width: 100%;
+	background: #D2D2D2;
+	top: 0;
+	color: Black;
+	border-radius: 10px;
+	height: 50px;
+}
+
+#back_btn_tc {
+	height: 70px;
+}
+
+#confirmButton {
+	width: 100%;
+	background: #006dae;
+	color: white;
+	border-radius: 10px;
+	height: 70px;
+}
+
+#send-button :hover,
+#login-button :hover,
+#back_btn :hover,
+#back_btn_tc :hover,
+#confirmButton :hover {
+	background-image: linear-gradient(rgba(0, 0, 0, 0.265) 0 0);
+}
+
+#recaptcha-container {
+	line-height: -100px;
+}

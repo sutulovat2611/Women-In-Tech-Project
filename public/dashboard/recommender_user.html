@@ -1,0 +1,250 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="favicon.ico">
+    <title>Recommender User Dashboard</title>
+
+    <!-- Fonts CSS -->
+    <link href="https://fonts.googleapis.com/css2?family=Overpass:ital,wght@0,100;0,200;0,300;0,400;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <!-- Icons CSS -->
+    <link rel="stylesheet" href="css/feather.css">
+    <!-- Date Range Picker CSS -->
+    <link rel="stylesheet" href="css/daterangepicker.css">
+    <!-- App CSS -->
+    <link rel="stylesheet" href="css/app-light.css" id="lightTheme" disabled>
+    <link rel="stylesheet" href="css/app-dark.css" id="darkTheme">
+
+    <link rel="stylesheet" href="https://unpkg.com/purecss@2.0.6/build/pure-min.css" integrity="sha384-Uu6IeWbM+gzNVXJcM9XV3SohHtmWE+3VGi496jvgX1jyvDTXfdK+rfZc8C1Aehk5" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/recommender_user.css">
+
+
+
+  </head>
+  <body class="vertical  light">
+    <div class="wrapper">
+      <nav class="topnav navbar navbar-light">
+        <button type="button" class="navbar-toggler text-muted mt-2 p-0 mr-3 collapseSidebar">
+          <i class="fe fe-menu navbar-toggler-icon"></i>
+        </button>
+      </nav>
+
+
+      <aside class="sidebar-left border-right bg-white shadow" id="leftSidebar" data-simplebar>
+        <a href="#" class="btn collapseSidebar toggle-btn d-lg-none text-muted ml-2 mt-3" data-toggle="toggle">
+          <i class="fe fe-x"><span class="sr-only"></span></i>
+        </a>
+        <nav class="vertnav navbar navbar-light">
+          <!-- nav bar -->
+          <div class="w-100 mb-4 d-flex">
+            <a class="navbar-brand mx-auto mt-2 flex-fill text-center">
+              <img src="../css/images/logo.png" width = "100" height = "100">
+            </a>
+          </div>
+
+
+          <p class="text-muted nav-heading mt-4 mb-1">
+            <span>Navigation</span>
+          </p>
+          <ul class="navbar-nav flex-fill w-100 mb-2">
+            <li class="nav-item w-100">
+              <a class="nav-link" href="./admin_dashboard_landing.html">
+                <img src="../css/images/home_page_icon.png" width = "35" height = "30">
+                <!-- <i class="fe fe-help-circle fe-16"></i> -->
+                <span class="ml-3 item-text">Admin Home Page</span>
+              </a>
+            </li>
+          </ul>
+
+        </nav>
+      </aside>
+
+      <main role="main" class="main-content">
+        <!--USER LISTS-->
+        <div class="container-fluid">
+            <div class="row justify-content-center">
+                <div class="col-12">
+                <div class="row">
+                    <div class="col-md-12 mb-4">
+                    <div class="card shadow" style="height: 250px; overflow-y: auto;">
+                        <div class="card-header">
+                            <strong class="card-title mb-0">List of users</strong>
+                        </div>
+                        <div class="card-body">
+                            <div class="container-fluid">
+                            <div class="row justify-content-center">
+                                <div class="col-12">
+        
+                                <div class="row my-1" >
+                                    <table class="pure-table" id="userListTable">
+                                    <thead style="background-color: dimgray;">
+                                        <tr>
+                                            <th style="color: white;">No.</th>
+                                            <th style="color: white;">Phone number</th>
+                                            <th style="color: white;">Username</th>
+                                            <th style="color: white;"></th>
+                                        </tr>
+                                    </thead>
+                                    </table>
+                                </div>
+                                </div>
+                            </div>
+                            </div>
+                        </div> <!-- /.card-body -->
+                    </div>
+                    </div> <!-- /. col -->
+                </div> <!-- end section -->
+                </div> <!-- .col-12 -->
+            </div> <!-- .row -->
+        </div> <!-- .container-fluid -->
+
+        <!--Graphs -->
+        <div class="container-fluid" id="graphContainer" >
+            <div class="row justify-content-center">
+                <div class="col-12">
+                <div class="row">
+                    <div class="col-md-6 mb-4" id="barChart1" style="display: none;">
+                        <div class="card shadow">
+                            <div class="card-header">
+                            <strong class="card-title mb-0">Video history interest distribution</strong>
+                            </div>
+                            <div class="card-body">
+                            <canvas id="chart1" width="400" height="300"></canvas>
+                            </div> <!-- /.card-body -->
+                        </div> <!-- /.card -->
+                    </div> <!-- /. col -->
+                    <div class="col-md-6 mb-4" id="barChart2" style="display: none;">
+                        <div class="card shadow">
+                            <div class="card-header">
+                            <strong class="card-title mb-0">Favourited videos interest distribution</strong>
+                            </div>
+                            <div class="card-body">
+                                <canvas id="chart2" width="400" height="300"></canvas>
+                            </div> <!-- /.card-body -->
+                        </div> <!-- /.card -->
+                    </div> <!-- /. col -->
+                </div>
+                </div>
+            </div>
+        </div>
+
+
+        <!--WATCHED VIDEO LISTS-->
+        <div class="container-fluid" id="videoListContainer" style="display: none;">
+            <div class="row justify-content-center">
+                <div class="col-12">
+                <div class="row">
+                    <div class="col-md-12 mb-4">
+                    <div class="card shadow" style="height: 300px; width: auto;overflow-y: auto;">
+                        <div class="card-header">
+                            <strong class="card-title mb-0">List of videos watched</strong>
+                        </div>
+                        <div class="card-body" id="videoListBody">
+                            <div class="container-fluid">
+                            <div class="row justify-content-center">
+                                <div class="col-12">
+        
+                                <div class="row my-1" >
+                                    <table class="pure-table" id="videoListTable">
+                                    
+                                    </table>
+                                </div>
+                                </div>
+                            </div>
+                            </div>
+                        </div> <!-- /.card-body -->
+                    </div>
+                    </div> <!-- /. col -->
+                </div> <!-- end section -->
+                </div> <!-- .col-12 -->
+            </div> <!-- .row -->
+        </div> <!-- .container-fluid -->
+
+              <!-- SPECIFIC VIDEO ANALYTIC -->
+                <div class="container-fluid" style="display: none;" id="videoAnalyticContainer">
+                    <div class="row justify-content-center">
+                        <div class="col-12">
+                        <div class="row">
+                            <div class = "col-md-12 mb-4">
+                            <div class="card shadow" id="videoAnalyticCard">
+                                <div class="card-header">
+                                <strong class="card-title mb-0" id="videoAnalyticsTitle"></strong>
+                                </div>
+                                <div class="card-body">
+                                <div class="container-fluid">
+                                    <div class="row justify-content-center">
+                                    <div class="col-12">
+                                        <div class="row my-1 d-flex justify-content-center" id="videoAnalyticsTable">
+                                            
+                                        </div>
+                                    </div>
+                                    </div>
+                                </div>
+                                </div> <!-- /.card-body -->
+                                </div>
+                            </div>
+                        </div>
+                        </div>
+                        </div>
+                </div>
+                    </main> <!-- main -->
+                  </div> <!-- .wrapper -->
+
+    <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+    <script src="/__/firebase/7.18.0/firebase-app.js"></script>
+    <script src="/__/firebase/8.3.3/firebase-firestore.js"></script>
+    <script src="/__/firebase/7.18.0/firebase-auth.js"></script>
+    <script src="/__/firebase/7.18.0/firebase-database.js"></script>
+    <script src="/__/firebase/init.js?useEmulator=true"></script>
+    <script src="js/jquery.min.js"></script>
+    <script src="js/popper.min.js"></script>
+    <script src="js/moment.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/simplebar.min.js"></script>
+    <script src='js/daterangepicker.js'></script>
+    <script src='js/jquery.stickOnScroll.js'></script>
+    <script src="js/tinycolor-min.js"></script>
+    <script src="js/config.js"></script>
+    <script src="js/d3.min.js"></script>
+    <script src="js/topojson.min.js"></script>
+    <script src="js/datamaps.all.min.js"></script>
+    <script src="js/datamaps-zoomto.js"></script>
+    <script src="js/datamaps.custom.js"></script>
+    <script src="js/Chart.min.js"></script>
+    <script src="script/recommender_user.js"></script>
+    <script>
+      /* defind global options */
+      Chart.defaults.global.defaultFontFamily = base.defaultFontFamily;
+      Chart.defaults.global.defaultFontColor = colors.mutedColor;
+    </script>
+    <script src="js/gauge.min.js"></script>
+    <script src="js/jquery.sparkline.min.js"></script>
+    <script src="js/apexcharts.min.js"></script>
+    <script src="js/apexcharts.custom.js"></script>
+    <script src="js/apps.js"></script>
+
+    <script src="script/recommender_user.js"></script>
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-56159088-1"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+
+      function gtag()
+      {
+        dataLayer.push(arguments);
+      }
+      gtag('js', new Date());
+      gtag('config', 'UA-56159088-1');
+    </script>
+        <script>
+          localStorage.setItem("mode", "light")
+          modeSwitch();
+
+
+        </script>
+  </body>
+</html>

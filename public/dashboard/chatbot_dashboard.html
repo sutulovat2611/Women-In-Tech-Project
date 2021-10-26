@@ -1,0 +1,172 @@
+<!doctype html>
+<html lang="en">
+   <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+      <meta name="description" content="">
+      <meta name="author" content="">
+      <link rel="icon" href="favicon.ico">
+      <title>Chatbot Questions and Responses</title>
+      <!-- Fonts CSS -->
+      <link href="https://fonts.googleapis.com/css2?family=Overpass:ital,wght@0,100;0,200;0,300;0,400;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+      <!-- Icons CSS -->
+      <link rel="stylesheet" href="css/feather.css">
+      <!-- Date Range Picker CSS -->
+      <link rel="stylesheet" href="css/daterangepicker.css">
+      <!-- App CSS -->
+      <link rel="stylesheet" href="css/app-light.css" id="lightTheme">
+      <!-- <link rel="stylesheet" href="css/app-dark.css" id="darkTheme" disabled> -->
+      <link rel="stylesheet" href="https://unpkg.com/purecss@2.0.6/build/pure-min.css" integrity="sha384-Uu6IeWbM+gzNVXJcM9XV3SohHtmWE+3VGi496jvgX1jyvDTXfdK+rfZc8C1Aehk5" crossorigin="anonymous">
+      <link rel="stylesheet"  href="css/chatbot_dashboard.css">
+   </head>
+   <body class="vertical  light">
+      <div class="wrapper">
+      <nav class="topnav navbar navbar-light">
+         <button type="button" class="navbar-toggler text-muted mt-2 p-0 mr-3 collapseSidebar">
+         <i class="fe fe-menu navbar-toggler-icon"></i>
+         </button>
+      </nav>
+      <aside class="sidebar-left border-right bg-white shadow" id="leftSidebar" data-simplebar>
+         <a href="#" class="btn collapseSidebar toggle-btn d-lg-none text-muted ml-2 mt-3" data-toggle="toggle">
+         <i class="fe fe-x"><span class="sr-only"></span></i>
+         </a>
+         <nav class="vertnav navbar navbar-light">
+            <!-- nav bar -->
+            <div class="w-100 mb-4 d-flex">
+               <a class="navbar-brand mx-auto mt-2 flex-fill text-center">
+               <img src="../css/images/logo.png" width = "100" height = "100">
+               </a>
+            </div>
+            <p class="text-muted nav-heading mt-4 mb-1">
+               <span>Navigation</span>
+            </p>
+            <ul class="navbar-nav flex-fill w-100 mb-2">
+               <li class="nav-item w-100">
+                  <a class="nav-link" href="admin_dashboard_landing.html">
+                     <img src="../css/images/home_page_icon.png" width = "35" height = "30">
+                     <!-- <i class="fe fe-help-circle fe-16"></i> -->
+                     <span class="ml-3 item-text">Admin Home Page</span>
+                  </a>
+               </li>
+            </ul>
+         </nav>
+    </aside>
+        <main role="main" class="main-content">
+            <div class="container-fluid h-100">
+                <div class="row justify-content-center">
+                    <div class="col-12">
+                        <div class="row align-items-center mb-2">
+                          <div class="col">
+                            <h2 class="h3 page-title">Chatbot Admin Dashboard</h2>
+                          </div>
+                        </div>
+                        <div class="dropdown">
+                           <button class="btn btn-secondary dropdown-toggle" type="button" id="language-dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                             English
+                           </button>
+                           <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+                              <h6 class="dropdown-header">Language</h6>
+                             <button class="dropdown-item" type="button" onclick="loadQuestions(this)" value="0">English </button>
+                             <button class="dropdown-item" type="button" onclick="loadQuestions(this)" value="1">Chinese </button>
+                             <button class="dropdown-item" type="button" onclick="loadQuestions(this)" value="2">Malay </button>
+                             <button class="dropdown-item" type="button" onclick="loadQuestions(this)" value="3">Thai </button>
+                           </div>
+                         </div>
+                         <br>
+                        <div class="mb-2 align-items-center">
+                            <div class="card shadow mb-4" id="card">
+                                <div class="card-body scrollable">
+                                    <div class="row" id="card-row">
+                                        <div class="col-xs-12 col-sm-4 text-left pl-2" id="questions-area">
+                                            <div id="questions-list-div">
+                                                <div class="list-group list-group-flush" id="questions-list">
+                                                </div>
+                                            </div>
+                                            <div id="questions-spinner" class="justify-content-center align-items-center h-100 d-flex" style="display:none; top:100px;">
+                                                <div class="spinner-border" role="status">
+                                                  <span class="sr-only">Loading...</span>
+                                                </div>
+                                            </div> 
+                                        </div>
+                                        <div class="col-xs-12 col-8 col-lg-8" id="responses-area">
+                                            <div class="card-header">
+                                              <strong class="h2 card-title" id="responses-header">Select a Question to view Responses!</strong>
+                                            </div>
+                                            <div id="responses-list-div">
+                                                <ul class="list-group list-group-flush" id="responses-list">
+                                                </ul>
+                                            </div>
+                                            <div id="responses-spinner" class="justify-content-center align-items-center h-75" style="display:none;">
+                                                <div class="spinner-border" role="status">
+                                                  <span class="sr-only">Loading...</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div> <!-- / .card-body -->
+                        </div> <!-- / .card -->
+                        </div>
+                    </div>
+                </div><!-- <div class="row justify-content-center"> -->
+             </div> <!-- <div class="container-fluid"> --> 
+                       
+      </main>
+      
+      <!-- From questions_responses.html -->
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.1/jquery.min.js"></script>
+  
+      <!-- The core Firebase JS SDK is always required and must be listed first -->
+      <script src="/__/firebase/8.1.1/firebase-app.js"></script>
+      <script src="/__/firebase/8.1.1/firebase-analytics.js"></script>
+      <script src="/__/firebase/7.18.0/firebase-auth.js"></script>
+      <script src="/__/firebase/7.18.0/firebase-database.js"></script>
+      <script src="/__/firebase/8.3.3/firebase-firestore.js"></script>
+  
+      <!-- Initialize Firebase -->
+      <script src="/__/firebase/init.js"></script>
+  
+      <!-- Our own stuff here -->
+      <script src="../script/constants.js"></script>
+      <script src="script/chatbot_dashboard.js"></script>
+
+      <script src="js/jquery.min.js"></script>
+      <script src="js/popper.min.js"></script>
+      <script src="js/moment.min.js"></script>
+      <script src="js/bootstrap.min.js"></script>
+      <script src="js/simplebar.min.js"></script>
+      <script src='js/daterangepicker.js'></script>
+      <script src='js/jquery.stickOnScroll.js'></script>
+      <script src="js/tinycolor-min.js"></script>
+      <script src="js/config.js"></script>
+      <script src="js/d3.min.js"></script>
+      <script src="js/topojson.min.js"></script>
+      <script src="js/datamaps.all.min.js"></script>
+      <script src="js/datamaps-zoomto.js"></script>
+      <script src="js/datamaps.custom.js"></script>
+      <script src="js/Chart.min.js"></script>
+      <script>
+         /* defind global options */
+         Chart.defaults.global.defaultFontFamily = base.defaultFontFamily;
+         Chart.defaults.global.defaultFontColor = colors.mutedColor;
+      </script>
+      <script src="js/gauge.min.js"></script>
+      <script src="js/jquery.sparkline.min.js"></script>
+      <script src="js/apexcharts.min.js"></script>
+      <script src="js/apexcharts.custom.js"></script>
+      <script src="js/apps.js"></script>
+      <!-- Global site tag (gtag.js) - Google Analytics -->
+      <script async src="https://www.googletagmanager.com/gtag/js?id=UA-56159088-1"></script>
+      <script>
+         window.dataLayer = window.dataLayer || [];
+         
+         function gtag()
+         {
+           dataLayer.push(arguments);
+         }
+         gtag('js', new Date());
+         gtag('config', 'UA-56159088-1');
+      </script>
+   </body>
+   </body>
+</html>

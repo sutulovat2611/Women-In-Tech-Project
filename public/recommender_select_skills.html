@@ -1,0 +1,534 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="description" content="Learn how to use the Firebase platform on the Web">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Recommender - Learning Interests</title>
+
+        <!-- Disable tap highlight on IE -->
+        <meta name="msapplication-tap-highlight" content="no">
+
+        <!-- Web Application Manifest -->
+        <!--<link rel="manifest" href="manifest.json">-->
+
+        <!-- Add to homescreen for Chrome on Android -->
+        <meta name="mobile-web-app-capable" content="yes">
+        <meta name="application-name" content="Recommender">
+        <meta name="theme-color" content="#303F9F">
+
+        <!-- Add to homescreen for Safari on iOS -->
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+        <meta name="apple-mobile-web-app-title" content="Recommender">
+        <meta name="apple-mobile-web-app-status-bar-style" content="#303F9F">
+
+        <!-- Tile icon for Win8 -->
+        <meta name="msapplication-TileColor" content="#3372DF">
+        <meta name="msapplication-navbutton-color" content="#303F9F">
+
+        <!-- Material Design Lite -->
+        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+        <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-pink.min.css">
+        <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+        <script src="https://code.iconify.design/1/1.0.7/iconify.min.js"></script>
+
+        <!-- App Styling -->
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en">
+        <link rel="stylesheet" href="./css/recommender_select_skills.css">
+        
+        <!--Translation pop-up styling-->
+        <style>
+            .goog-te-banner-frame.skiptranslate {
+            display: none !important;
+            }
+            body {
+            top: 0px !important;
+            }
+            .goog-logo-link {
+            display:none !important;
+            }
+            .trans-section {
+            margin: 100px;
+            }
+        </style>
+
+        <title>Recommender - Learning Interests</title>
+        <!-- TODO: Enable First Input Delay polyfill library. -->
+        <script type="text/javascript">
+            !function(n,e)
+            {
+                var t,o,i,c=[],f={passive:!0,capture:!0},r=new Date,a="pointerup",u="pointercancel";
+                function p(n,c)
+                {
+                    t||(t=c,o=n,i=new Date,w(e),s())
+                }
+                function s()
+                {
+                    o>=0&&o<i-r&&(c.forEach(function(n){n(o,t)}),c=[])
+                }
+                function l(t)
+                {
+                    if(t.cancelable)
+                    {
+                        var o=(t.timeStamp>1e12?new Date:performance.now())-t.timeStamp;
+                        "pointerdown"==t.type?function(t,o)
+                        {
+                            function i()
+                            {
+                                p(t,o),r()
+                            }
+                            function c()
+                            {
+                                r()
+                            }
+                            function r()
+                            {
+                                e(a,i,f),e(u,c,f)
+                            }
+                            n(a,i,f),n(u,c,f)
+                        }
+                        (o,t):p(o,t)
+                    }
+
+                }
+                function w(n)
+                {
+                    ["click","mousedown","keydown","touchstart","pointerdown"].forEach(function(e){n(e,l,f)})
+                }
+                w(n),self.perfMetrics=self.perfMetrics||{},self.perfMetrics.onFirstInputDelay=function(n){c.push(n),s()}
+            }
+
+            (addEventListener,removeEventListener);
+        </script>
+    </head>
+    
+      <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+        <!-- Header section -->
+        <header class="mdl-layout__header mdl-color-text--white notranslate" id='topheader'>
+          <div class="mdl-cell mdl-cell--12-col mdl-cell--12-col-tablet mdl-grid">
+             <div class="mdl-layout__header-row mdl-cell mdl-cell--12-col mdl-cell--12-col-tablet mdl-cell--12-col-desktop">
+              <div class="box">Recommender - <br>Learning Interests</div>
+                <div class="mdl-layout-spacer"></div>
+                <nav class="mdl-navigation" style="position: relative;">
+                   <a class="mdl-navigation__link" href="main_page.html">
+                       <img src="./css/images/smaller_home.png" style="width: 110px;
+                       height: 100px;">
+                   </a>
+                 </nav>
+             </div>
+          </div>
+       </header>
+      
+      <!--Navigation menu-->
+      <div class="mdl-layout__drawer">
+        <br>
+        <img src = "./css/images/logo.png" width=90 height=90 class="img-centre notranslate">
+        <br>
+        <nav class="mdl-navigation">
+          <a class="mdl-navigation__link" id="translate_btn" onclick="showTranslationModal();"> <img src="./css/images/translate_icon.png" class="nav_icon" id="translate_icon"></img> Translate</a>
+          <a class="mdl-navigation__link" href="./main_page.html"> <img src="./css/images/home_page_icon.png" class="nav_icon" id="home_page_icon"> Home Page</a>
+          <a class="mdl-navigation__link" href="./chatbot.html"> <img src="./css/images/chatbot_icon.png"  class="nav_icon" id="chatbot_icon"> Chat Bot</a>
+          <a class="mdl-navigation__link" href="./recommender_Ui.html"> <img src="./css/images/recommender_icon.png" class="nav_icon" id="recommender_icon"> Recommender</a>
+          <a class="mdl-navigation__link" href="./forum.html"> <img src="./css/images/forum_icon.png" class="nav_icon" id="forum_icon"> Forum Page</a>
+
+        </nav>
+      </div>
+
+      <body>
+        <br>
+        <p id="username">Hello, [username]. Select the skill you are interested to watch</p>
+        <!--Vertical tab buttons for each learning interest-->
+        <div class="row">
+          <div class="tab">
+            <button class="tablinks" onclick="openInterest(event, 'ICT/Technology Skills')" id="defaultOpen">
+              ICT/Tech&shy;nology Skills
+              <img src="./css/images/ict_options.png" style="width:300px;background:transparent;"/>
+            </button>
+            <button class="tablinks" onclick="openInterest(event, 'Social Communication Skills')" id="social_comm">
+              Social Communi&shy;cation Skills
+              <img src="./css/images/social_comm_options.png" style="width:300px;background:transparent;"/>
+            </button>
+            <button class="tablinks" onclick="openInterest(event, 'Complementary Skills')" id="comple_options">
+              Comple&shy;mentary Skills
+              <img src="./css/images/complementary_options.png" style="width:300px;background:transparent;"/>
+            </button>
+            <button class="tablinks" onclick="openInterest(event, 'Work-related Skills')" id="work_options">
+              Work-related Skills
+              <img src="./css/images/work_related_options.png" style="width:300px;background:transparent;"/>
+            </button>
+          </div>
+          
+          <!--List of skills under each tab-->
+          <!--ICT/Technology Skills-->
+          <div id="ICT/Technology Skills" class="tabcontent">
+            <ol type=1>
+              <li>
+                <table onclick="goToRecommender('RadioEmail')">
+                  <tr>
+                    <td>
+                      <label for="RadioEmail"><img src="./css/images/email.png" class="interests"/></label>
+                    </td>
+                    <td id="description">
+                      <input type="radio" id="RadioEmail" name="selection" value="Email"/>
+                      <label for="RadioEmail" style="display:inline-block;"></label>E-mail (e.g. Management and Setup)</label>
+                    </td>
+                  </tr>
+                </table>
+              </li>
+
+              <li>
+                <table onclick="goToRecommender('RadioOnlineCollaboration')">
+                  <tr>
+                    <td>
+                      <label for="RadioOnlineCollaboration"><img src="./css/images/online_collaboration.png" class="interests"/></label>
+                    </td>
+                    <td id="description">
+                      <input type="radio" id="RadioOnlineCollaboration" name="selection" value="Online collaboration"/>
+                      <label for="RadioOnlineCollaboration" style="display:inline-block;"></label>Online Collaboration</label>
+                    </td>
+                  </tr>
+                </table>
+              </li>
+
+              <li>
+                <table onclick="goToRecommender('RadioSearch')">
+                  <tr>
+                    <td>
+                      <label for="RadioSearch"><img src="./css/images/search_for_info.png" class="interests"/></label>
+                    </td>
+                    <td id="description">
+                      <input type="radio" id="RadioSearch" name="selection" value="Browser search"/>
+                      <label for="RadioSearch" style="display:inline-block;"></label>Browser Search</label>
+                    </td>
+                  </tr>
+                </table>
+              </li>
+
+              <li>
+                <table onclick="goToRecommender('RadioDevice')">
+                  <tr>
+                    <td>
+                      <label for="RadioDevice"><img src="./css/images/smartphone_tablet_pc.png" class="interests"/></label>
+                    </td>
+                    <td id="description">
+                      <input type="radio" id="RadioDevice" name="selection" value="Device use"/>
+                      <label for="RadioDevice" style="display:inline-block;"></label>Device use</label>
+                    </td>
+                  </tr>
+                </table>
+              </li>
+
+              <li>
+                <table onclick="goToRecommender('RadioSocialMedia')">
+                  <tr>
+                    <td>
+                      <label for="RadioSocialMedia"><img src="./css/images/social_media.png" class="interests"/></label>
+                    </td>
+                    <td id="description">
+                      <input type="radio" id="RadioSocialMedia" name="selection" value="Social media use"/>
+                      <label for="RadioSocialMedia" style="display:inline-block;"></label>Social Media Use (e.g., Skype, Facebook, LinkedIn etc.)</label>
+                    </td>
+                  </tr>
+                </table>
+              </li>
+            </ol>
+          </div>
+          
+          <!--Social Communication Skills-->
+          <div id="Social Communication Skills" class="tabcontent">
+            <ol type=1>
+              <li>
+                <table onclick="goToRecommender('RadioListening')">
+                  <tr>
+                    <td>
+                      <label for="RadioListening"><img src="./css/images/active_listening.png" class="interests"/></label>
+                    </td>
+                    <td id="description">
+                      <input type="radio" id="RadioListening" name="selection" value="Active listening"/>
+                      <label for="RadioListening" style="display:inline-block;"></label>Active Listening</label>
+                    </td>
+                  </tr>
+                </table>
+              </li>
+
+              <li>
+                <table onclick="goToRecommender('RadioEffective')">
+                  <tr>
+                    <td>
+                      <label for="RadioEffective"><img src="./css/images/effective_comm.png" class="interests"/></label>
+                    </td>
+                    <td id="description">
+                      <input type="radio" id="RadioEffective" name="selection" value="Effective communication"/>
+                      <label for="RadioEffective" style="display:inline-block;"></label>Effective Communi&shy;cation</label>
+                    </td>
+                  </tr>
+                </table>
+
+              </li>
+
+              <li>
+                <table onclick="goToRecommender('RadioNegotiation')">
+                  <tr>
+                    <td>
+                      <label for="RadioNegotiation"><img src="./css/images/negotiation.png" class="interests"/></label>
+                    </td>
+                    <td id="description">
+                      <input type="radio" id="RadioNegotiation" name="selection" value="Negotiation skill"/>
+                      <label for="RadioNegotiation" style="display:inline-block;"></label>Negotiation Skill</label>
+                    </td>
+                  </tr>
+                </table>
+              </li>
+
+              <li>
+                <table onclick="goToRecommender('RadioPersuasion')">
+                  <tr>
+                    <td>
+                      <label for="RadioPersuasion"><img src="./css/images/persuasion.png" class="interests"/></label>
+                    </td>
+                    <td id="description">
+                      <input type="radio" id="RadioPersuasion" name="selection" value="Persuasion"/>
+                      <label for="RadioPersuasion" style="display:inline-block;"></label>Persuasion</label>
+                    </td>
+                  </tr>
+                </table>
+              </li>
+
+              <li>
+                <table onclick="goToRecommender('RadioRelationshipManagement')">
+                  <tr>
+                    <td>
+                      <label for="RadioRelationshipManagement"><img src="./css/images/relationship_management.png" class="interests"/></label>
+                    </td>
+                    <td id="description">
+                      <input type="radio" id="RadioRelationshipManagement" name="selection" value="Relationship management"/>
+                      <label for="RadioRelationshipManagement" style="display:inline-block;"></label>Relationship Management</label>
+                    </td>
+                  </tr>
+                </table>
+              </li>
+            </ol>
+          </div>
+          
+          <!--Complementary Skills-->
+          <div id="Complementary Skills" class="tabcontent">
+            <ol type=1>
+              <li>
+                <table onclick="goToRecommender('RadioArt')">
+                  <tr>
+                    <td>
+                      <label for="RadioArt"><img src="./css/images/art.png" class="interests"/></label>
+                    </td>
+                    <td id="description">
+                      <input type="radio" id="RadioArt" name="selection" value="Art"/>
+                      <label for="RadioArt" style="display:inline-block;"></label>Art (e.g., photography/&shy;video recording/&shy;editing)</label>
+                    </td>
+                  </tr>
+                </table>
+              </li>
+
+              <li>
+                <table onclick="goToRecommender('RadioCaregiving')">
+                  <tr>
+                    <td>
+                      <label for="RadioCaregiving"><img src="./css/images/caregiving.png" class="interests"/></label>
+                    </td>
+                    <td id="description">
+                      <input type="radio" id="RadioCaregiving" name="selection" value="Caregiving"/>
+                      <label for="RadioCaregiving" style="display:inline-block;"></label>Caregiving</label>
+                    </td>
+                  </tr>
+                </table>
+              </li>
+
+              <li>
+                <table onclick="goToRecommender('RadioCooking')">
+                  <tr>
+                    <td>
+                      <label for="RadioCooking"><img src="./css/images/cooking.png" class="interests"/></label>
+                    </td>
+                    <td id="description">
+                      <input type="radio" id="RadioCooking" name="selection" value="Cooking"/>
+                      <label for="RadioCooking" style="display:inline-block;"></label>Cooking (e.g., recipe, nutrition, healthy diets)</label>
+                    </td>
+                  </tr>
+                </table>
+
+              </li>
+
+              <li>
+                <table onclick="goToRecommender('RadioExercise')">
+                  <tr>
+                    <td>
+                      <label for="RadioExercise"><img src="./css/images/exercise.png" class="interests"/></label>
+                    </td>
+                    <td id="description">
+                      <input type="radio" id="RadioExercise" name="selection" value="Exercise"/>
+                      <label for="RadioExercise" style="display:inline-block;"></label>Exercise</label>
+                    </td>
+                  </tr>
+                </table>
+              </li>
+
+              <li>
+                <table onclick="goToRecommender('RadioProfessionalWriting')">
+                  <tr>
+                    <td>
+                      <label for="RadioProfessionalWriting"><img src="./css/images/professional_writing.png" class="interests"/></label>
+                    </td>
+                    <td id="description">
+                      <input type="radio" id="RadioProfessionalWriting" name="selection" value="Professional writing"/>
+                      <label for="RadioProfessionalWriting" style="display:inline-block;"></label>Professional Writing</label>
+                    </td>
+                  </tr>
+                </table>
+              </li>
+
+            </ol>
+          </div>
+          
+          <!--Work-related skills-->
+          <div id="Work-related Skills" class="tabcontent">
+            <ol type=1>
+              <li>
+                <table onclick="goToRecommender('RadioCollabTeamwork')">
+                  <tr>
+                    <td>
+                      <label for="RadioCollabTeamwork"><img src="./css/images/collab_teamwork.png" class="interests"/></label>
+                    </td>
+                    <td id="description">
+                      <input type="radio" id="RadioCollabTeamwork" name="selection" value="Collaboration and teamwork"/>
+                      <label for="RadioCollabTeamwork" style="display:inline-block;"></label>Collaboration and Teamwork</label>
+                    </td>
+                  </tr>
+                </table>
+              </li>
+
+              <li>
+                <table onclick="goToRecommender('RadioCriticalThinking')">
+                  <tr>
+                    <td>
+                      <label for="RadioCriticalThinking"><img src="./css/images/critical_thinking.png" class="interests"/></label>
+                    </td>
+                    <td id="description">
+                      <input type="radio" id="RadioCriticalThinking" name="selection" value="Critical thinking"/>
+                      <label for="RadioCriticalThinking" style="display:inline-block;"></label>Critical Thinking</label>
+                    </td>
+                  </tr>
+                </table>
+              </li>
+
+              <li>
+                <table onclick="goToRecommender('RadioEntrepreneurship')">
+                    <tr>
+                      <td>
+                        <label for="RadioEntrepreneurship"><img src="./css/images/entrepreneurship.png" class="interests"/></label>
+                      </td>
+                      <td id="description">
+                        <input type="radio" id="RadioEntrepreneurship" name="selection" value="Entrepreneurship"/>
+                        <label for="RadioEntrepreneurship" style="display:inline-block;"></label>Entrepre&shy;neurship</label>
+                      </td>
+                    </tr>
+                  </table>
+                </li>
+
+              <li>
+                <table onclick="goToRecommender('RadioLeadership')">
+                  <tr>
+                    <td>
+                      <label for="RadioLeadership"><img src="./css/images/people_leadership.png" class="interests"/></label>
+                    </td>
+                    <td id="description">
+                      <input type="radio" id="RadioLeadership" name="selection" value="People and Leadership"/>
+                      <label for="RadioLeadership" style="display:inline-block;"></label>People and Leadership</label>
+                    </td>
+                  </tr>
+                </table>
+              </li>
+
+              <li>
+                <table onclick="goToRecommender('RadioPersonalSelling')">
+                  <tr>
+                    <td>
+                      <label for="RadioPersonalSelling"><img src="./css/images/personal_selling.png" class="interests"/></label>
+                    </td>
+                    <td id="description">
+                      <input type="radio" id="RadioPersonalSelling" name="selection" value="Personal selling"/>
+                      <label for="RadioPersonalSelling" style="display:inline-block;"></label>Personal Selling</label>
+                    </td>
+                  </tr>
+                </table>
+              </li>
+            </ol>
+          </div>
+      </div>
+
+      <!--Translation modal-->
+      <div class="modal" id="myModal" style="text-align:center; position: absolute;z-index:1000; height:120%;">
+          <div id="google_translate_element" style="display: none;"></div>
+          <div class="modal-content">
+              <p style="margin-top: 10%;">
+                <b>Choose Language:
+                </b>
+              </p>
+              <hr style="margin: 0;">
+
+              <button id ="lang_butt_id_e" class = "mdl-button mdl-js-button mdl-button--raised  lang_butt notranslate" onclick="reset()"
+                value="English">
+              <label>
+              <span id="lang_text" style="color:white;">English</span>
+              </label>
+              </button>
+
+              <br>
+              <button id ="lang_butt_id_c" class = "mdl-button mdl-js-button mdl-button--raised  lang_butt notranslate" onclick="changeLang(this.value)"
+                value="Chinese (Simplified)">
+              <label>
+              <span id="lang_text" style="color:white;">中文</span>
+              </label>
+              </button>
+
+              <br>
+              <button id ="lang_butt_id_t" class = "mdl-button mdl-js-button mdl-button--raised  lang_butt notranslate" onclick="changeLang(this.value)"
+                value="Thai" >
+              <label>
+              <span id="lang_text" style="color:white;">ภาษาไทย</span>
+              </label>
+              </button>
+
+              <br>
+              <button id ="lang_butt_id_m" class = "mdl-button mdl-js-button mdl-button--raised  lang_butt notranslate" onclick="changeLang(this.value)"
+                value="Malay">
+              <label>
+              <span id="lang_text" style="color:white;">Bahasa Melayu</span>
+              </label>
+              </button>
+
+              <br>
+              <br>
+              <div>
+                <button class="mdl-button mdl-js-button mdl-button--raised  button-close-modal" id="button-close-modal" onclick="hideTranslationModal()">
+                Back
+                </button>
+              </div>
+          </div>
+      </div>
+    </body>
+
+    <!--JQuery script-->
+    <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+    <!--Google Translate script-->
+    <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit" type="text/javascript"></script>
+    <!--Firebase scripts-->
+    <script src="/__/firebase/7.18.0/firebase-app.js"></script>
+    <script src="/__/firebase/7.18.0/firebase-auth.js"></script>
+    <script src="/__/firebase/7.18.0/firebase-database.js"></script>
+    <script src="/__/firebase/init.js?useEmulator=true"></script>
+    <!--Recommender scripts-->
+    <script src=./script/recommender_select_skills.js></script>
+    <!--Translation script-->
+    <script src="./script/translation.js"></script>
+
+</html>

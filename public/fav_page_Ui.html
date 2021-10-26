@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link href="https://vjs.zencdn.net/7.11.4/video-js.css" rel="stylesheet" />
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="Learn how to use the Firebase platform on the Web">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recommender</title>
+
+    <!-- Disable tap highlight on IE -->
+    <meta name="msapplication-tap-highlight" content="no">
+
+    <!-- Web Application Manifest -->
+    <!--<link rel="manifest" href="manifest.json">-->
+
+    <!-- Add to homescreen for Chrome on Android -->
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="application-name" content="Recommender">
+    <meta name="theme-color" content="#303F9F">
+
+    <!-- Add to homescreen for Safari on iOS -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Recommender">
+    <meta name="apple-mobile-web-app-status-bar-style" content="#303F9F">
+
+    <!-- Tile icon for Win8 -->
+    <meta name="msapplication-TileColor" content="#3372DF">
+    <meta name="msapplication-navbutton-color" content="#303F9F">
+
+    <!-- Material Design Lite -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-pink.min.css">
+    <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+
+    <!-- App Styling -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en">
+    <link rel="stylesheet" href="./css/recommender_main.css">
+
+    <title>Recommender</title>
+
+    <style>
+      .goog-te-banner-frame.skiptranslate {
+  display: none !important;
+} 
+body {
+  top: 0px !important; 
+}
+.goog-logo-link {
+  display:none !important;
+}
+.trans-section {
+  margin: 100px;
+}
+
+    /* TODO move to css */
+      .sortInterestBox{
+        width: fit-content;
+        height: auto;
+        margin: 5px;
+        display:inline-block;
+        border: solid black 3px;
+        border-radius: 25px;
+        font-weight: bold;
+
+        /* position: relative; */
+      }
+      .labelSort{
+        border: 0px;
+        width: fit-content;
+        height: auto;
+        /* color: aquamarine; */
+        margin: 2px;
+        display:inline-block;
+        /* position: relative; */
+      }
+      .h_iframe iframe {
+        width:90%;
+        height:100%;
+        margin: auto;
+      }
+      .h_iframe {
+        height: 100%;
+        width:100%;
+      }
+
+      .favVideoPg{
+        height: 100%;
+        width: 100%;
+        position: fixed;
+        background: gray;
+        /* opacity: 0.3; */
+        z-index: 7;
+        overflow: scroll;
+        display: none;
+      }
+
+      .hideStuff{
+        font-size:0px;
+        height:0px;
+        margin:0px;
+      }
+      .workspace {
+        height: 99%;
+        width: 98%;
+        /* border: 5px solid black; */
+        position: relative;
+        overflow: auto
+      }
+
+      .workspaceheader {
+        /* border: 5px solid black; */
+        /* margin-top: 10px; */
+        position: relative;
+        /* height: 100%; */
+        width: 100%;
+        margin: auto; /*center align */
+        display: none;
+      }
+
+      .table {
+        height: fit-content;
+        width: 98%;
+        /* border: 5px solid yellow; */
+        margin: 10px auto;
+        position: relative;
+        text-align: center;
+      }
+
+      .tabletext{
+        display: inline;
+        font-family: Arial;
+        font-size: 14pt;
+      }
+
+      .favCard{
+        margin-top: 20px;
+        width: 100%;
+        height: 380px;
+        color: #000;
+        background-color: #fff;
+        position: relative;
+
+        /* border: 5px solid red; */
+      }
+
+      .favCardThumbnail{
+        /* margin-top: 5px; */
+        margin: auto;
+        width: 22%;
+        height: 100%;
+        position: absolute;
+        /* background-color: #0f0f0f; */
+      }
+
+      .favCardTitle{
+        margin-right: 5px;
+        width: 60%;
+        height: 45%;
+        float: right;
+        position: relative;
+        /* background-color: brown; */
+        overflow-y: scroll;
+      }
+
+      .favCardInterest{
+        margin-right: 5px;
+        width: 60%;
+        height: auto;
+        float: right;
+        position: relative;
+        /* background-color: royalblue; */
+        font-weight: bold;
+      }
+
+      .favCardTopBtn{
+        margin-right: 5px;
+        width: 60%;
+        height: auto;
+        float: right;
+        position: relative;
+        /* background-color: mediumspringgreen; */
+      }
+
+      .favDeleteBtn{
+        margin: 15px;
+        border-radius: 50%;
+        float:right;
+        width: auto;
+        height:60px;
+      }
+
+      @media only screen and (max-width: 1350px) {
+        .favCard{
+
+        width: 100%;
+        height: 200px;
+        color: #000;
+        background-color: #fff;
+        position: relative;
+        /* border: 1px solid red; */
+        }
+
+        .favCardThumbnail{
+
+        width: 40%;
+        height: 100%;
+        position: absolute;
+        /* background-color: #fff; */
+        }
+
+        .favCardInterest{
+
+        margin-right: 5px;
+        width: 60%;
+        height: auto;
+        float: right;
+        position: relative;
+        /* background-color: #fff; */
+        font-weight: bold;
+      }
+
+        .favCardTitle{
+        margin-right: 5px;
+        width: 60%;
+        height: 65%;
+        float: right;
+        position: relative;
+        /* background-color: blue; */
+        overflow-y: scroll;
+        }
+
+        .favCardTopBtn{
+        margin-right: 5px;
+        width: 60%;
+        height: auto;
+        float: right;
+        position: relative;
+        /* background-color: blue; */
+        }
+        .favDeleteBtn{
+        margin: 10px;
+        border-radius: 50%;
+        float:right;
+        width: auto;
+        height:50px;
+      }
+      }
+
+      @media only screen and (max-width: 600px) {
+        .favCard{
+        width: 100%;
+        height: 120px;
+        color: #000;
+        background-color: #fff;
+        position: relative;
+        /* border: 1px solid red; */
+        }
+
+        .favCardThumbnail{
+        width: 35%;
+        height: 100%;
+        position: absolute;
+        /* background-color: #fff; */
+        }
+
+        .favCardInterest{
+        margin-right: 5px;
+        width: 50%;
+        height: auto;
+        float: right;
+        position: relative;
+        /* background-color: pink; */
+        font-weight: bold;
+        font-family: Arial;
+        font-size: 14pt;
+      }
+
+        .favCardTitle{
+
+        margin-right: 5px;
+        width: 50%;
+        height: 50%;
+        float: right;
+        position: relative;
+        /* background-color: green; */
+        overflow-y: scroll;
+        font-family: Arial;
+        font-size: 14pt;
+
+        }
+
+        .favCardTopBtn{
+        margin-right: 5px;
+        width: 50%;
+        height: auto;
+        float: right;
+        position: relative;
+        /* background-color: red; */
+        }
+        .favDeleteBtn{
+        margin: 0px;
+        border-radius: 50%;
+        float:right;
+        width: auto;
+        height: 30px;
+        }
+      }
+      .img-centre {
+      margin-left: auto;
+      margin-right: auto;
+      display: block;
+      }
+      #nav-icons{
+      font-size: 30px;
+      padding-bottom: 20px;
+      }
+      i.icon-teal{
+      color:#006DAE;
+      }
+      i.icon-teal2{
+      color:#00695c;
+      }
+      .mdl-navigation__link{
+      font-size: 16px;
+      text-align: left;
+      padding-left: 0;
+      padding-right: 3;
+      }
+      .mdl-grid-body{
+      margin: 0;
+      padding: 0;
+      }
+
+    </style>
+
+    <!-- TODO: Enable First Input Delay polyfill library. -->
+  </head>
+    <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+      <!-- Header section -->
+      <header class="mdl-layout__header mdl-color-text--white notranslate" id='topheader'>
+        <div class="mdl-cell mdl-cell--12-col mdl-cell--12-col-tablet mdl-grid">
+           <div class="mdl-layout__header-row mdl-cell mdl-cell--12-col mdl-cell--12-col-tablet mdl-cell--12-col-desktop">
+            <h3> Favourite </h3>
+              <div class="mdl-layout-spacer"></div>
+              <nav class="mdl-navigation" style="left: 45px; position: relative;">
+                 <a class="mdl-navigation__link" href="main_page.html">
+                     <img src="./css/images/smaller_home.png" style="width: 110px;
+                     height: 100px;">
+                 </a>
+               </nav>
+           </div>
+        </div>
+     </header>
+
+      <div class="mdl-layout__drawer">
+        <br>
+        <img src = "./css/images/logo.png" width=90 height=90 class="img-centre">
+        <br>
+        <span class="mdl-layout-title">Favourite</span>
+        <nav class="mdl-navigation">
+          <a class="mdl-navigation__link" id="translate_btn" onclick="showTranslationModal();"> <img src="./css/images/translate_icon.png" class="nav_icon" id="translate_icon"></img> Translate</a>
+          <a class="mdl-navigation__link" href="./main_page.html"> <img src="./css/images/home_page_icon.png" class="nav_icon" id="home_page_icon"> Home Page</a>
+          <a class="mdl-navigation__link" href="./chatbot.html"> <img src="./css/images/chatbot_icon.png"  class="nav_icon" id="chatbot_icon"> Chat Bot</a>
+          <a class="mdl-navigation__link" href="./recommender_Ui.html"> <img src="./css/images/recommender_icon.png" class="nav_icon" id="recommender_icon"> Recommender</a>
+          <a class="mdl-navigation__link" href="./forum.html"> <img src="./css/images/forum_icon.png" class="nav_icon" id="forum_icon"> Forum Page</a>
+       </nav>
+      </div>
+
+      <div class="modal" id="myModal" style="text-align:center; position: absolute;z-index:1000; height:120%;">
+  <div id="google_translate_element" style="display: none;">
+  </div>
+  <div class="modal-content">
+     <p style="margin-top: 10%;">
+        <b>Choose Language:
+        </b>
+     </p>
+     <hr style="margin: 0;">
+     <button id ="lang_butt_id_e" class = "mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect lang_butt notranslate" onclick="reset()"
+        value="English">
+     <label>
+     <span id="lang_text" style="color:white;">English</span>
+     </label>
+     </button>
+     <br>
+     <button id ="lang_butt_id_c" class = "mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect lang_butt notranslate" onclick="changeLang(this.value)"
+        value="Chinese (Simplified)">
+     <label>
+     <span id="lang_text" style="color:white;">中文</span>
+     </label>
+     </button>
+     <br>
+     <button id ="lang_butt_id_t" class = "mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect lang_butt notranslate" onclick="changeLang(this.value)"
+        value="Thai" >
+     <label>
+     <span id="lang_text" style="color:white;">ภาษาไทย</span>
+     </label>
+     </button>
+     <br>
+     <button id ="lang_butt_id_m" class = "mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect lang_butt notranslate" onclick="changeLang(this.value)"
+        value="Malay">
+     <label>
+     <span id="lang_text" style="color:white;">Bahasa Melayu</span>
+     </label>
+     </button>
+     <br>
+     <br>
+     <div>
+        <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect button-close-modal" id="button-close-modal" onclick="hideTranslationModal()">
+        Back
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <body style="background-color: #f5f5f5;">
+    
+    <div class = workspace >
+      <div class = favVideoPg id="favVideo">
+        <div id="favVideoPlayer"></div>
+      </div>
+      
+      <!-- Tab navigation -->
+      <div class="container">
+        <div class="tabs">
+        
+           <!-- Recommender tab -->
+           <input type="checkbox" id="radio-0" name="tabs" value="Recommender" onclick='window.location.href = "recommender_Ui.html"' checked/>
+           <label class="tab" for="radio-0" id="tab1"><b><img src="./css/images/recommender_icon.png" style="height:22px">Recom&shy;mender</b></label>
+
+           <!-- History tab -->
+           <input type="checkbox" id="radio-1" name="tabs" value="History" onclick='window.location.href = "recommender_history_Ui.html"' checked/>
+           <label class="tab" for="radio-1" id="tab1"><b><img src="./css/images/history_icon.png" style="height:22px">History</b></label>
+
+           <!-- Edit skill selection tab -->
+           <input type="checkbox" id="radio-2" name="tabs" value="Edit_skill" onclick='window.location.href = "recommender_select_skills.html"'/>
+           <label class="tab" for="radio-2" id="tab2"><b><img src="./css/images/create_post_icon.png" style="height: 22px; width: 15%">Edit skill selection</b></label>
+
+
+           <span class="glider"></span>
+        </div>
+      </div>
+      <br>
+      
+      <!-- return and delete -->
+      <div class="row">
+        <div class="col-9">
+          <a class="mdl-navigation__link"> <!-- onclick goes here -->
+            <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--accent" onclick="deleteAllFav()" style="margin-left: 30px;">Delete All Favourite</button>
+          </a>
+        </div>
+      </div>
+      <!-- 
+      <button id="favSortBtn" onclick="show_sort()">Sort by interest</button>
+      <div id="sortingArea" class="workspaceheader" style="overflow: scroll; display: none;">
+        <button onclick="filter()">Filter</button><br><br>
+      </div>
+       -->
+
+      <!-- Sort -->
+      <button id="favSortBtn" class="mdl-button mdl-js-button mdl-button--raised" onclick="show_sort()" style="margin-left: 30px; margin-top: 10px;background-color: #006dae; color: white;">Sort by interest</button>
+
+      <!-- <button id="favSortBtn" onclick="show_sort()">Sort by interest</button> -->
+      <div id="sortingArea" class="workspaceheader" style="overflow: scroll; display: none;">
+        <div>
+          <button class="mdl-button mdl-js-button mdl-button--raised" onclick="filter()" style="left: 30px; margin-top: 10px;background-color: #006dae; color: white;">Filter</button>
+        </div>
+      </div>
+
+      <!-- <button id="favSortBtn" onclick="show_sort()">Sort by interest</button> -->
+      <!-- <div id="sortingArea" class="workspaceheader" style="overflow: scroll; display: none;"> -->
+        <!-- <button onclick="filter()">Filter</button><br><br> -->
+      <!-- </div> -->
+
+      <!-- card area -->
+      <div style="margin: auto; text-align: center;">
+        <b id="noVideoFavDisplay" style=" font-family: Arial; font-size: 16px;">
+          <br><br><br>There are no videos saved in favorites right now.
+        </b>
+      </div>
+      <div class="mdl-grid" id="favGrid"></div>
+
+      <table class="table" id="favtable">
+        <p id="favEmptyText" style="text-align: center;"></p>
+      </table>
+    </div>
+    <p class="hideStuff" id="favIdCount"></p>
+    <script src="/__/firebase/7.18.0/firebase-app.js"></script>
+    <script src="/__/firebase/7.18.0/firebase-auth.js"></script>
+    <script src="/__/firebase/7.18.0/firebase-database.js"></script>
+    <script src="/__/firebase/init.js?useEmulator=true"></script>
+
+    <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+
+    <script src="https://vjs.zencdn.net/7.11.4/video.min.js"></script>
+    <script src="./script/Youtube.min.js"></script>
+    <script src="./script/favpage.js"></script>
+    <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit" type="text/javascript"></script>
+    <script src="./script/translation.js"></script>
+  </body>
+</html>

@@ -1,0 +1,382 @@
+/* Header and navigation */
+html, body {
+    font-family: "Arial", sans-serif;
+    font-size: 14pt;
+    background-color: #d2d2d2;
+}
+
+.mdl-layout__header{
+    background-color: #006dae;
+}
+
+h4 {
+    margin-top: auto;
+    font-size: 22pt;
+    position: relative;
+}
+
+.material-icons {
+	font-size: 36px;
+	top: 8px;
+	position: relative;
+}
+
+.mdl-layout__header-row span {
+	margin-left: 15px;
+	margin-top: 17px;
+}
+
+.mdl-grid {
+	max-width: 1024px;
+	margin: auto;
+}
+
+.mdl-layout__header-row {
+	padding: auto;
+	margin: 0 auto;
+}
+
+.mdl-button .material-icons {
+	top: -1px;
+	margin-right: 5px;
+}
+
+.img-centre {
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+}
+
+#nav-icons {
+	font-size: 30px;
+	padding-bottom: 20px;
+}
+
+#g_translate_icon {
+	font-size: 30px;
+	color: white;
+	padding: 5px 16px;
+}
+
+.nav_icon,
+#translate_icon {
+	height: 50px;
+	position: relative;
+	right: 10px;
+	width: 49px;
+}
+
+#recommender_icon {
+	width: 49px;
+}
+
+
+.modal {
+    display: none;
+    /* Hidden by default */
+    position: fixed;
+    /* Stay in place */
+    z-index: 1;
+    /* Sit on top */
+    padding-top: 100px;
+    /* Location of the box */
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 100%;
+    /* Full width */
+    height: 100%;
+    /* Full height */
+    overflow: auto;
+    /* Enable scroll if needed */
+    background-color: rgb(0, 0, 0);
+    /* Fallback color */
+    background-color: rgba(0, 0, 0, 0.4);
+    /* Black w/ opacity */
+}
+
+/* Modal Content */
+.modal-content {
+    background-color: #fefefe;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 50%;
+    height: 50%;
+    overflow: auto;
+}
+
+.lang_butt {
+    margin: 2%;
+    width: 30%;
+    background-color: #006DAE;
+}
+
+/* The translation*/
+.modal-content {
+    width: 50%;
+    height: 50%;
+}
+
+
+#lang_text{
+    display: inline;
+}
+
+i.icon-teal{
+    color:#006DAE;
+}
+
+.mdl-navigation__link{
+    font-size: 16px;
+    text-align: left;
+    padding-left: 0;
+    padding-right: 3;
+}
+
+.mdl-grid-body{
+    margin: 0;
+    padding: 0;
+}
+
+/*Body*/
+.mdl-grid {
+    max-width: 1024px;
+    margin: auto;
+}
+
+.vjs-control-bar {
+    font-size: 200%
+}
+
+.mdl-card {
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 2.5%;
+    width: 60%;
+    height: 40em;
+    min-height: 0;
+    background: linear-gradient(white, #f9f9f9);
+    justify-content: space-between;
+}
+
+.mdl-card__media{
+    width: 100%;
+}
+
+#fav_button, #history_button, #edit_button, #go_back_button{
+    /*border-radius: 25px;*/
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-left: 25px;
+    background-color: #d2d2d2;
+}
+
+#home_button{
+    background-color: white;
+    height: 50px;
+	width: 35px;
+    margin-left: 80px;
+}
+
+#option_buttons{
+    background-color: #006dae;
+}
+
+.mdl-button .material-icons {
+    top: -1px;
+    margin-right: 5px;
+}
+
+.material-icons {
+    font-size: 36px;
+    top: 8px;
+    position: relative;
+}
+
+.space {
+    display: inline-block;
+    width: 100%;
+}
+
+#user-container #user-pic {
+    top: -3px;
+    position: relative;
+    display: inline-block;
+    background-image: url('/images/profile_placeholder.png');
+    background-repeat: no-repeat;
+    width: 40px;
+    height: 40px;
+    background-size: 40px;
+    border-radius: 20px;
+}
+
+#user-container #user-name {
+    font-size: 16px;
+    line-height: 36px;
+    padding-right: 10px;
+    padding-left: 20px;
+}
+
+/* All below is for the tab navigation */
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap");
+:root {
+--primary-color: #006DAE;
+--secondary-color: #E4E4E4;
+}
+*, *:after, *:before {
+box-sizing: border-box;
+}
+
+
+.tabs * {
+z-index: 2;
+}
+input[type="checkbox"] {
+display: none;
+position: relative;
+bottom: 10px
+}
+.tab {
+display: flex;
+align-items: center;
+justify-content: center;
+height: 45px;
+width: 200px;
+font-size: 1.25rem;
+font-weight: 500;
+border-radius: 25px;
+cursor: pointer;
+transition: color 0.15s ease-in;
+}
+
+#tab0, #tab1, #tab2{
+  font-size:20px ;
+}
+
+/* ends */
+
+
+/*Media query*/
+@media all and (min-width:551px){
+    /* hi-res laptops and desktops */
+    
+    #option_buttons{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .container {
+  		position: relative;
+  		top: 12px;
+  		left: 25px;
+  		display: flex;
+  		justify-content: center;
+  	}
+
+      .tabs {
+  		display: flex;
+  		position: relative;
+  		right: 29px;
+  		background-color: #fff;
+  		box-shadow: 0 0 1px 0 #dadada, 0 6px 12px 0 #dadada;
+  		padding: 0.75rem;
+  		border-radius: 15px;
+  		height: 50px;
+  		width: 724px;
+          color:rgb(0, 0, 0);
+  	}
+
+  	#tab0 {
+  		position: relative;
+  		bottom: 10px;
+  		left: 0px;
+  	}
+
+  	#tab1 {
+  		position: relative;
+  		bottom: 10px;
+  		left: 40px;
+  	}
+  	#tab2 {
+  		position: relative;
+  		bottom: 10px;
+  		left: 100px
+  	}
+
+    #home_button{
+        margin-left: 55px;
+    }
+
+    h3 {
+		position: relative;
+		left: 25px;
+	}
+
+
+}
+
+@media screen and (max-width: 600px) and (max-height: 1100px){
+    /* for mobile */
+    .mdl-card {
+      width: 100%;
+    }
+
+    /* For the translation portion*/
+    .modal-content {
+        width: 80%;
+        height: 60%;
+    }
+
+    #skipPrevious{
+        margin-left:5%;
+    }
+
+    #skipNext{
+        margin-right:20%;
+    }
+
+    .container {
+  		margin-top: 12px;
+  		justify-content: center;
+        margin-left: 28px;
+  	}
+
+      /* for glider */
+  	.tabs {
+  		display: flex;
+  		position: relative;
+  		background-color: #fff;
+  		box-shadow: 0 0 1px 0 #dadada, 0 6px 12px 0 #dadada;
+  		padding: 0.75rem;
+  		border-radius: 15px;
+  		height: 70px;
+  		width: 350px;
+  	}
+
+    #tab2 {
+      position: relative;
+      left: 15px
+    }
+
+
+    #tab0, #tab1, #tab2{
+  		font-size:18px ;
+  	}
+
+    #home_button{
+        margin-left: 35px;
+    }
+
+    h3 {
+		position: relative;
+		left: 25px;
+	}
+
+    .mdl-snackbar--active {
+        transform: translate(0, -110%); 
+    }
+
+
+}

@@ -1,0 +1,265 @@
+<html>
+   <head>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <!-- Burger navigation bar -->
+      <script src = "https://storage.googleapis.com/code.getmdl.io/1.0.6/material.min.js"></script>
+      <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+      <!-- Design -->
+      <link rel = "stylesheet"href = "https://storage.googleapis.com/code.getmdl.io/1.0.6/material.indigo-pink.min.css">
+      <link rel="stylesheet"  href="css/forum.css">
+      <style>
+         .chatbot-card > .mdl-card__title {
+         color: #fff;
+         height: 176px;
+         background: #006DAE;
+         }
+         .recommender-card > .mdl-card__title {
+         color: #fff;
+         height: 176px;
+         background: #ff7c00;
+         }
+         .forum-card > .mdl-card__title {
+         color: #fff;
+         height: 176px;
+         background: #147d76;
+         }
+         .forum-card.mdl-card__title,
+         .recommender-card > .mdl-card__title,
+         .chatbot-card.mdl-card__title
+         {
+         color: #fff;
+         height: 176px;
+         }
+         .recommender-card,
+         .chatbot-card,
+         .forum-card
+         {
+         height: 350px;
+         width: 350px;
+         }
+         @media all and (min-width:551px) {
+         #chatbotcard
+         {
+         position: relative; 
+         right: 100px;
+         }
+         #forumcard
+         {
+         position: relative; 
+         left: 100px;
+         }
+         }
+         @media all and (max-width: 1024px) {
+         .desktop-br {display: none;}
+         /* mobile */
+         .recommender-card,
+         .chatbot-card,
+         .forum-card
+         {
+         height: 160px;
+         }
+         .chatbot-card > .mdl-card__title {
+         color: #fff;
+         height: 70px;
+         background: #006DAE;
+         }
+         .recommender-card > .mdl-card__title {
+         color: #fff;
+         height: 70px;
+         background: #ff7c00
+         }
+         .forum-card > .mdl-card__title {
+         color: #fff;
+         height: 70px;
+         background: #147d76;
+         }
+         }
+         .mdl-card__supporting-text
+         {
+         font-size: 16px;
+         }
+         @media all and (min-width:551px) {
+         .desktop-br {display: inline;}
+         }
+      </style>
+      <!--Dont display the google banner at the top-->
+      <style>
+         .goog-te-banner-frame.skiptranslate {
+         display: none !important;
+         } 
+         body {
+         top: 0px !important; 
+         }
+         .goog-logo-link {
+         display:none !important;
+         }
+         .trans-section {
+         margin: 100px;
+         padding: 20px;
+         padding-bottom: 25px;
+         }
+         .lang_butt {
+         margin-top: 10%; 
+         background-color: white;
+         }
+      </style>
+   </head>
+   <body>
+      <!-- Translation div -->
+      <div id="google_translate_element" style="display: none;"></div>
+      <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+         <!-- Header section containing logo -->
+         <header class="mdl-layout__header mdl-color-text--white notranslate" id='topheader'>
+            <div class="mdl-cell mdl-cell--12-col mdl-cell--12-col-tablet mdl-grid">
+               <div class="mdl-layout__header-row mdl-cell mdl-cell--12-col mdl-cell--12-col-tablet mdl-cell--12-col-desktop">
+                  <h3> Home Page</h3>
+                  <div class="mdl-layout-spacer"></div>
+               </div>
+            </div>
+         </header>
+         <div class="mdl-layout__drawer">
+            <br>
+            <img src = "./css/images/logo.png" width=90 height=90 class="img-centre">
+            <br>
+            <nav class="mdl-navigation">
+               <a class="mdl-navigation__link" id="translate_btn" onclick="showTranslationModal();"> <img src="./css/images/translate_icon.png" class="nav_icon" id="translate_icon"></img> Translate</a>
+               <a class="mdl-navigation__link" href="./chatbot.html"> <img src="./css/images/chatbot_icon.png"  class="nav_icon" id="chatbot_icon"> Chat Bot</a>
+               <!-- <a class="mdl-navigation__link" onclick="checkForPreference()"> <img src="./css/images/recommender_icon.png" class="nav_icon" id="recommender_icon"> Recommender</a>
+               <a class="mdl-navigation__link" href="./forum.html"> <img src="./css/images/forum_icon.png" class="nav_icon" id="forum_icon"> Forum </a> -->
+
+            </nav>
+         </div>
+         <!-- Change language -->
+         <div class="modal" id="myModal" style="text-align:center; position: absolute;z-index:1000; height:120%;">
+            <div id="google_translate_element" style="display: none;">
+            </div>
+            <div class="modal-content">
+               <p style="margin-top: 10%;">
+                  <b>Choose Language:
+                  </b>
+               </p>
+               <hr style="margin: 0;">
+               <button id ="lang_butt_id_e" class = "mdl-button mdl-js-button mdl-button--raised lang_butt notranslate" onclick="reset();changeLang(this.value)"
+                  value="English">
+               <label>
+               <span id="lang_text" style="color:white;">English</span>
+               </label>
+               </button>
+               <br>
+               <button id ="lang_butt_id_c" class = "mdl-button mdl-js-button mdl-button--raised lang_butt notranslate" onclick="changeLang(this.value)"
+                  value="Chinese (Simplified)">
+               <label>
+               <span id="lang_text" style="color:white;">中文</span>
+               </label>
+               </button>
+               <br>
+               <button id ="lang_butt_id_t" class = "mdl-button mdl-js-button mdl-button--raised lang_butt notranslate" onclick="changeLang(this.value)"
+                  value="Thai" >
+               <label>
+               <span id="lang_text" style="color:white;">ภาษาไทย</span>
+               </label>
+               </button>
+               <br>
+               <button id ="lang_butt_id_m" class = "mdl-button mdl-js-button mdl-button--raised lang_butt notranslate" onclick="changeLang(this.value)"
+                  value="Malay">
+               <label>
+               <span id="lang_text" style="color:white;">Bahasa Melayu</span>
+               </label>
+               </button>
+               <br>
+               <br>
+               <div>
+                  <button class="mdl-button mdl-js-button mdl-button--raised button-close-modal" id="button-close-modal" onclick="hideTranslationModal()">
+                  Back
+                  </button>
+               </div>
+            </div>
+         </div>
+         <br>
+         <main class="mdl-layout__content">
+            <div class="page-content">
+               <h3 style="text-align: center; color: #006DAE" id="username"></h3>
+               <h5 style="text-align: center  " > Choose one of the following:</h5>
+               <div class = "mdl-grid">
+                  <div class = "mdl-cell mdl-cell--4-col" id="chatbotcard">
+                     <!-- This is a chatbot card-->
+                     <div class = "chatbot-card mdl-card mdl-shadow--4dp ">
+                        <div class = "mdl-card__title ">
+                           <img src="css/images/chatbot_icon.png">
+                           <h2 class = "mdl-card__title-text ">Chat Bot</h2>
+                        </div>
+                        <div class = "mdl-card__supporting-text">
+                           Answer simple questions and get the recommendations according to your interests
+                        </div>
+                        <br class="desktop-br"> <br class="desktop-br">
+                        <div class = "mdl-card__actions mdl-card--border">
+                           <a class = "mdl-button mdl-button--colored mdl-js-button " onclick='window.location.href = "explanatoryStatementPage.html"'> Open Chat bot</a>
+                        </div>
+                     </div>
+                  </div>
+                  <div class = "mdl-cell mdl-cell--4-col" id="recommendercard">
+                     <!-- This is a recommender card-->
+                     <div class = "recommender-card mdl-card mdl-shadow--4dp">
+                        <div class = "mdl-card__title">
+                           <img src="css/images/recommender_icon.png">
+                           <h2 class = "mdl-card__title-text">Recommender</h2>
+                        </div>
+                        <div class = "mdl-card__supporting-text">
+                           Get recommendations of the videos and articles that suit your interests
+                        </div>
+                        <br class="desktop-br"><br><br class="desktop-br">
+                        <div class = "mdl-card__actions mdl-card--border">
+                           <!--<a class = "mdl-button mdl-button--colored mdl-js-button" onclick='checkForPreference()'>
+                           Open the recommender</a>-->
+                        </div>
+                     </div>
+                  </div>
+                  <br class="desktop-br"><br class="desktop-br"><br class="desktop-br">
+                  <!-- This is a forum card-->
+                  <div class = "mdl-cell mdl-cell--4-col" id="forumcard">
+                     <div class = "forum-card mdl-card mdl-shadow--4dp">
+                        <div class = "mdl-card__title">
+                           <img src="css/images/forum_icon.png">
+                           <h2 class = "mdl-card__title-text">Forum</h2>
+                        </div>
+                        <div class = "mdl-card__supporting-text">
+                           Interact with other users by liking and commenting their posts and post your own thoughts and questions
+                        </div>
+                        <br class="desktop-br"><br class="desktop-br">
+                        <div class = "mdl-card__actions mdl-card--border">
+                           <!--<a class = "mdl-button mdl-button--colored mdl-js-button" onclick='window.location.href = "forum.html"'>
+                           Open forum</a>-->
+                        </div>
+                        <div class = "mdl-card__menu">
+                           <button class = "mdl-button mdl-button--icon mdl-js-button">
+                           </button>
+                        </div>
+                     </div>
+                  </div>
+                  <br>
+               </div>
+            </div>
+            <br>
+      </div>
+      </div>
+      </main>
+      </div>
+      <script src="https://www.gstatic.com/firebasejs/8.3.2/firebase-app.js"></script>
+      <script src="https://www.gstatic.com/firebasejs/8.3.2/firebase-analytics.js"></script>
+      <script src = "script/firebaseConfig.js"></script>
+      <!-- FIREBAS STUFF I GOT FROM YT-->
+      <script src="/__/firebase/7.18.0/firebase-app.js"></script>
+      <script src="/__/firebase/8.3.3/firebase-firestore.js"></script>
+      <script src="/__/firebase/7.18.0/firebase-auth.js"></script>
+      <script src="/__/firebase/7.18.0/firebase-database.js"></script>
+      <script src="/__/firebase/init.js?useEmulator=true"></script>
+      <link rel="stylesheet"  href="css/forum.css">
+      <!-- Translation -->
+      <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit" type="text/javascript"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.2/jquery.min.js" type="text/javascript"></script>
+      <!-- Js files -->
+      <script type="text/javascript" src="script/main_page.js"></script>
+      <script src="script/translation.js"></script>
+      <script src="script/recommender_main.js"></script> <!--For recommender redirect check-->
+   </body>
+</html>

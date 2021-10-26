@@ -1,0 +1,129 @@
+
+html,body {
+    font-family: "Roboto", "Helvetica", sans-serif;
+    font-size: 100%;
+}
+body {
+    background-color: #eee;
+}
+
+/* HEADER CSS */
+.material-icons {
+    font-size: 36px;
+    top: 8px;
+    position: relative;
+}
+#header-grid {
+    max-width: 1024px;
+    margin: auto;
+}
+.mdl-layout__header-row span {
+    margin-left: 15px;
+    margin-top: 17px;
+}
+.mdl-layout__header-row {
+    padding: auto;
+    margin: 0 auto;
+} 
+.mdl-button .material-icons {
+    top: -1px;
+    margin-right: 5px;
+} 
+
+/* CARD CSS */
+main {
+    height: 100%;
+    padding-bottom: 0;
+}
+#messages-card-container {
+    min-height: 85%;
+    height: 85%;
+    padding-bottom: 15px;
+}
+#messages-card {
+    height: 100%;
+    margin-top: 15px;
+}
+.mdl-layout__header-row span {
+    margin-left: 15px;
+    margin-top: 17px;
+}
+.mdl-grid {
+    /* max-width: 2000px; */
+    margin: auto;
+}
+.mdl-layout__header-row {
+    padding: 0;
+    margin: 0 auto;
+}
+.mdl-card {
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 2.5%;
+    width: 90%;
+    height: auto;
+    min-height: 0;
+    background: linear-gradient(white, #f9f9f9);
+    justify-content: space-between;
+}
+.mdl-list {
+    height: 100%;
+    width: 95%;
+    padding: 0px;
+}
+.mdl-list__item:hover {
+    background-color: #d8d8d8;
+}
+#questions-list-div {
+    overflow-y: scroll;
+    height: 100%;
+}
+#responses-list-div {
+    overflow-y: scroll;
+    height: 100%;
+}
+.line {
+    padding-top: 5px;
+    width: 85%;
+    border-bottom: 1px solid black;
+    margin-left: auto;
+    margin-right: auto;
+}
+/* SCROLLBAR CSS */
+::-webkit-scrollbar {
+    width: 2.5px;
+    height: 12px;
+}
+::-webkit-scrollbar-track {
+    background: #f5f5f5;
+    border-radius: 10px;
+}
+::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    background: #ccc;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: #999;
+}
+@media screen and (max-width: 700px) {
+    header {
+    height: 113px;
+    padding-bottom: 80px !important;
+    }
+    #user-container {
+    top: 72px;
+    background-color: rgb(3,155,229);
+    height: 38px;
+    padding-top: 3px;
+    padding-right: 2px;
+    }
+    #user-container #user-pic {
+    top: 2px;
+    width: 33px;
+    height: 33px;
+    background-size: 33px;
+    }
+    .mdl-card {
+    width: 100%;
+    }
+}

@@ -1,0 +1,300 @@
+<html>
+   <head>
+      <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <script
+         src = "https://storage.googleapis.com/code.getmdl.io/1.0.6/material.min.js"></script>
+      <link rel = "stylesheet"
+         href = "https://storage.googleapis.com/code.getmdl.io/1.0.6/material.indigo-pink.min.css">
+      <link rel="stylesheet"  href="css/admin_landing.css">
+
+      <style>
+         .user-card > .mdl-card__title {
+         color: #fff;
+         height: 176px;
+         background: #ff7c00
+         }
+         .interest-card > .mdl-card__title {
+         color: #fff;
+         height: 176px;
+         background: #147d76;
+         }
+         .post-card > .mdl-card__title {
+         color: #fff;
+         height: 176px;
+         background:  #006DAE;
+         }
+         .user-card.mdl-card__title,
+         .interest-card > .mdl-card__title,
+         .post-card.mdl-card__title
+         {
+         color: #fff;
+         height: 176px;
+         }
+         .user-card,
+         .interest-card,
+         .post-card
+         {
+         height: 350px;
+         width: 350px;
+         }
+         @media all and (min-width:551px) {
+         #usercard
+         {
+         position: relative;
+         right: 100px;
+         }
+         #postcard
+         {
+         position: relative;
+         left: 100px;
+         }
+         #skillscard
+         {
+         position: relative;
+         left: 100px;
+         }
+         #csv_forum_export {
+         position: relative;
+         float: right;
+         top: 10px;
+         right: 270px;
+         }
+         #csv_recommender_export {
+         position: relative;
+         float: right;
+         top: 10px;
+         right: 170px;
+         }
+         }
+         @media all and (max-width: 1024px) {
+         .desktop-br {display: none;}
+         /* mobile */
+         .user-card,
+         .interest-card,
+         .post-card
+         {
+         height: 160px;
+         }
+         .user-card > .mdl-card__title {
+         color: #fff;
+         height: 70px;
+         background: #006DAE;
+         }
+         .interest-card > .mdl-card__title {
+         color: #fff;
+         height: 70px;
+         background: #ff7c00
+         }
+         .post-card > .mdl-card__title {
+         color: #fff;
+         height: 70px;
+         background: #147d76;
+         }
+         #csv_forum_export {
+         position: relative;
+         top: 10px;
+         left: 180px;
+         }
+         #csv_recommender_export {
+         position: relative;
+         top: 10px;
+         left: 110px;
+         }
+
+         }
+         .mdl-card__supporting-text
+         {
+         font-size: 16px;
+         }
+
+         @media all and (min-width:551px) {
+         .desktop-br {display: inline;}
+         }
+      </style>
+   </head>
+   <body>
+     <!-- Simple header with fixed tabs. -->
+      <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header
+                  mdl-layout--fixed-tabs">
+        <header class="mdl-layout__header" id="topheader">
+          <div class="mdl-layout__header-row">
+            <!-- Title -->
+            <span class="mdl-layout-title">Admin Dashboard</span>
+          </div>
+          <!-- Tabs -->
+          <div class="mdl-layout__tab-bar">
+            <a href="#fixed-chatbot" class="mdl-layout__tab is-active" style='background-color: #006DAE;'>Chatbot</a>
+            <a href="#fixed-recommender" class="mdl-layout__tab" style='background-color: #006DAE;'>Recommender</a>
+            <a href="#fixed-forum" class="mdl-layout__tab" style='background-color: #006DAE;'>Forum</a>
+          </div>
+        </header>
+
+        <main class="mdl-layout__content">
+          <section class="mdl-layout__tab-panel is-active" id="fixed-chatbot">
+            <br class="desktop-br"> 
+            <button id ="csv_chatbot_export" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" onclick="exportQues()" 
+            style='background-color: #006DAE; position: relative; float: right; top: 10px; right: 270px;'>CSV Export (Chatbot)</button>
+            <br class="desktop-br"><br class="desktop-br">
+            <div class="page-content">
+              <div class = "mdl-grid">
+               <div class = "mdl-cell mdl-cell--4-col">
+               </div>
+               <div class = "mdl-cell mdl-cell--4-col">
+                  <div class = "user-card mdl-card mdl-shadow--4dp ">
+                     <div class = "mdl-card__title ">
+                        <h2 class = "mdl-card__title-text ">Questions & Responses</h2>
+                     </div>
+                     <div class = "mdl-card__supporting-text">
+                        Get user responses ordered by questions 
+                     </div>
+                     <br class="desktop-br"> <br class="desktop-br">
+                     <div class = "mdl-card__actions mdl-card--border">
+                        <a class = "mdl-button mdl-button--colored mdl-js-button"  onclick='window.location.href = "chatbot_dashboard.html"'>view more</a>
+                     </div>
+                  </div>
+               </div>
+            </div>
+          </section>
+          <section class="mdl-layout__tab-panel" id="fixed-recommender">
+            <br class="desktop-br"> 
+            <button id ="csv_recommender_export" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" onclick="csvExportRecommenderData()" style='background-color: #006DAE;'>CSV Export (Recommender)</button>
+            <br class="desktop-br"><br class="desktop-br">
+            <div class="page-content">
+              <!-- Your content goes here -->
+              <div class = "mdl-grid">
+                <div class = "mdl-cell mdl-cell--4-col" id="usercard">
+                   <div class = "user-card mdl-card mdl-shadow--4dp ">
+                      <div class = "mdl-card__title ">
+                         <h2 class = "mdl-card__title-text ">Users</h2>
+                      </div>
+                      <div class = "mdl-card__supporting-text">
+                         Get video analytics on all the users
+                      </div>
+                      <br class="desktop-br"> <br class="desktop-br">
+                      <div class = "mdl-card__actions mdl-card--border">
+                         <a class = "mdl-button mdl-button--colored mdl-js-button"  onclick='window.location.href = "recommender_user.html"'>view more</a>
+                      </div>
+                   </div>
+                </div>
+
+                <div class = "mdl-cell mdl-cell--4-col" id="favouritescard">
+                   <div class = "interest-card mdl-card mdl-shadow--4dp ">
+                      <div class = "mdl-card__title ">
+                         <h2 class = "mdl-card__title-text ">Favourites</h2>
+                      </div>
+                      <div class = "mdl-card__supporting-text">
+                         Get information on all favourited videos
+                      </div>
+                      <br class="desktop-br"> <br class="desktop-br">
+                      <div class = "mdl-card__actions mdl-card--border">
+                         <a class = "mdl-button mdl-button--colored mdl-js-button "  onclick='window.location.href = "recommender_favourites.html"'> view more</a>
+                      </div>
+                   </div>
+                </div>
+
+                <div class = "mdl-cell mdl-cell--4-col" id="skillscard">
+                   <div class = "post-card mdl-card mdl-shadow--4dp ">
+                      <div class = "mdl-card__title ">
+                         <h2 class = "mdl-card__title-text ">Skills</h2>
+                      </div>
+                      <div class = "mdl-card__supporting-text">
+                         Get information on all the skills
+                      </div>
+                      <br class="desktop-br"> <br class="desktop-br">
+                      <div class = "mdl-card__actions mdl-card--border">
+                         <a class = "mdl-button mdl-button--colored mdl-js-button " onclick='window.location.href = "recommender_skills.html"'> View more</a>
+                      </div>
+                   </div>
+                </div>
+              </div>
+            </div>
+          </section>
+          <section class="mdl-layout__tab-panel" id="fixed-forum">
+            <br class="desktop-br"> 
+            <button id ="csv_forum_export" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" onclick="csvExportForumData()" style='background-color: #006DAE;'>CSV Export (Forum)</button>
+            <br class="desktop-br"><br class="desktop-br"> 
+            <div class="page-content">
+              <!-- Your content goes here -->
+              <div class = "mdl-grid">
+                <div class = "mdl-cell mdl-cell--4-col" id="usercard">
+                   <!-- This is a chatbot card-->
+                   <div class = "user-card mdl-card mdl-shadow--4dp ">
+                      <div class = "mdl-card__title ">
+                         <h2 class = "mdl-card__title-text ">Users</h2>
+                      </div>
+                      <div class = "mdl-card__supporting-text">
+                         Get information on all the users
+                      </div>
+                      <br class="desktop-br"> <br class="desktop-br">
+                      <div class = "mdl-card__actions mdl-card--border">
+                         <a class = "mdl-button mdl-button--colored mdl-js-button" onclick='window.location.href = "forum_user.html"'>view more</a>
+                      </div>
+                   </div>
+                </div>
+
+                <div class = "mdl-cell mdl-cell--4-col" id="interestcard">
+                   <!-- This is a chatbot card-->
+                   <div class = "interest-card mdl-card mdl-shadow--4dp ">
+                      <div class = "mdl-card__title ">
+                         <h2 class = "mdl-card__title-text ">Interest</h2>
+                      </div>
+                      <div class = "mdl-card__supporting-text">
+                         Get information on all interests
+                      </div>
+                      <br class="desktop-br"> <br class="desktop-br">
+                      <div class = "mdl-card__actions mdl-card--border">
+                         <a class = "mdl-button mdl-button--colored mdl-js-button " onclick='window.location.href = "forum_interest.html"'> view more</a>
+                      </div>
+                   </div>
+                </div>
+
+                <div class = "mdl-cell mdl-cell--4-col" id="postcard">
+                   <!-- This is a chatbot card-->
+                   <div class = "post-card mdl-card mdl-shadow--4dp ">
+                      <div class = "mdl-card__title ">
+                         <h2 class = "mdl-card__title-text ">Posts</h2>
+                      </div>
+                      <div class = "mdl-card__supporting-text">
+                         Get information on all the posts
+                      </div>
+                      <br class="desktop-br"> <br class="desktop-br">
+                      <div class = "mdl-card__actions mdl-card--border">
+                         <a class = "mdl-button mdl-button--colored mdl-js-button " onclick='window.location.href = "forum_post.html"'> View more</a>
+                      </div>
+                   </div>
+                </div>
+              </div>
+
+            </div>
+          </section>
+        </main>
+      </div>
+
+
+
+      <script src="https://www.gstatic.com/firebasejs/8.3.2/firebase-app.js"></script>
+      <!-- TODO: Add SDKs for Firebase products that you want to use
+         https://firebase.google.com/docs/web/setup#available-libraries -->
+      <script src="https://www.gstatic.com/firebasejs/8.3.2/firebase-analytics.js"></script>
+      <script src = "script/firebaseConfig.js"></script>
+      <!-- FIREBAS STUFF I GOT FROM YT-->
+      <script src="/__/firebase/7.18.0/firebase-app.js"></script>
+      <script src="/__/firebase/8.3.3/firebase-firestore.js"></script>
+      <script src="/__/firebase/7.18.0/firebase-auth.js"></script>
+      <script src="/__/firebase/7.18.0/firebase-database.js"></script>
+      <script src="/__/firebase/init.js?useEmulator=true"></script>
+      <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+      <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit" type="text/javascript"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.2/jquery.min.js" type="text/javascript"></script>
+      <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.6.2/js/bootstrap-select.min.js" type="text/javascript"></script>
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" type="text/javascript"></script> -->
+      <script src="script/forum_csv_export.js" type="module"></script>
+      <script src="script/forum_csv_export.js"></script>
+      <script src="script/recommender_csv.js"></script>
+      <script src="../script/constants.js"></script>
+      <script src="script/chatbot_csv_export.js"></script>
+      <script src="script/translation.js"></script>
+      <script src="script/translatePage.js"></script>
+   </body>
+</html>

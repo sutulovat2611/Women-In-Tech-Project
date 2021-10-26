@@ -1,0 +1,32 @@
+#userInfo{
+    justify-content: center;
+    text-align: center;
+}
+
+#userError{
+    color: red;
+}
+
+
+#userListTable ,#videoListTable{
+    margin-left: auto;
+    margin-right: auto;
+    width:100%;
+}
+
+.table tbody tr th{
+    background-color: #cbcbcb;
+    color: #000;
+    width: fit-content;
+}
+
+.scroll {
+    max-height: auto;
+    overflow-y: auto;
+}
+
+.pure-table.pure-table-horizontal tbody tr th {
+    background-color: #696969;
+    color: #FFFFFF;
+    width: fit-content;
+}

@@ -1,0 +1,47 @@
+
+#searchbar{
+      width: 75%;;
+
+    }
+
+#totalUsers{
+    text-align: center;
+
+}
+
+#userInfo{
+    justify-content: center;
+    text-align: center;
+
+}
+
+
+#userError{
+    color: red;
+}
+
+
+#historyCard{
+    width:98%;
+}
+
+
+#historyTable{
+    margin-top: 2%;
+    margin-left: auto;
+    margin-right: auto;
+    width:85%;
+}
+
+#stacked-state{
+    width: 100%;
+}
+
+#likesOnPosts, #dislikesOnPosts, #commentsReplies, #favouritePosts, #postsCreated, #likesOnComments{
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    color: black
+}
+
+

@@ -1,0 +1,140 @@
+<html>
+<head>
+    <title>Explanatory Statement</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src = "https://storage.googleapis.com/code.getmdl.io/1.0.6/material.min.js"></script>
+    <link rel = "stylesheet" href = "https://storage.googleapis.com/code.getmdl.io/1.0.6/material.indigo-pink.min.css">
+    <link rel="stylesheet"  href="css/explanatory-statement.css">
+    <style>
+        body {
+            background-color: #eee;
+        }
+        .chatbot-card
+        {
+            height: 90%;
+            width: 90%;
+            margin-left: 5%;
+            margin-right: 5%;
+            margin-top: 2%;
+            margin-bottom: 2%;
+        }
+        .textArea{
+            margin-inline: auto;
+            margin-top: 2%;
+            height: 90%;
+            width: 95%;
+            border: thick solid;
+            border-color: #D2D2D2;
+            overflow-y: scroll;
+        }
+        .tick-warning{
+            color: red;
+        }
+        .mdl-button{
+            text-align: center;
+        }
+        .checkbox-div{
+            margin-inline: auto;
+        }
+        .button-div{
+            margin-inline: auto;
+            margin-bottom: 2%;
+        }
+        .mdl-card__supporting-text
+        {
+            font-size: 20px;
+            line-height: 1.6;
+        }
+        @media all and (min-width:610px) {
+            .desktop-br {display: inline;}
+        }
+
+        h4{
+            font-weight: bold;
+        }
+        h3{
+            left: auto;
+        }
+    </style>
+
+    <!-- to remove top header for google translate -->
+    <style>
+        .goog-te-banner-frame.skiptranslate {
+            display: none !important;
+        }
+        body {
+            top: 0px !important;
+        }
+        .goog-logo-link {
+            display:none !important;
+        }
+        .trans-section {
+            margin: 100px;
+        }
+    </style>
+</head>
+<body>
+<!-- Translation div -->
+<div id="google_translate_element" style="display: none;"></div>
+
+<div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+    <!-- Header section containing logo -->
+    <header class="mdl-layout__header mdl-color-text--white topheader">
+        <div class="mdl-cell mdl-cell--12-col mdl-cell--12-col-tablet mdl-grid">
+            <div class="mdl-layout__header-row mdl-cell mdl-cell--12-col mdl-cell--12-col-tablet mdl-cell--12-col-desktop"
+                 style="padding:0px 16px 0px 16px;">
+                <h3 id="title">Explanatory Statement</h3>
+                <div class="mdl-layout-spacer"></div>
+            </div>
+        </div>
+    </header>
+    <main class="mdl-layout__content">
+        <div class="page-content">
+            <div class = "chatbot-card mdl-card mdl-shadow--4dp">
+                <div class = "mdl-card__supporting-text textArea notranslate" id="content-box"></div>
+                <br class="desktop-br"> <br class="desktop-br">
+                <div class="checkbox-div">
+                    <center>
+                    <input type="checkbox" id="checkbox">
+                    <label for="checkbox" id="acceptStatement">I have read and accept the Explanatory Statement</label>
+                    <br class="desktop-br">
+                    <label class="tick-warning" id="tick-warning" hidden>Please Tick Above to Accept the Explanatory Statement</label>
+                    </center>
+                </div>
+                <div class="button-div">
+                    <button class="mdl-button mdl-js-button mdl-button--raised" onclick='window.location.href = "./main_page.html"' id="backButton">
+                        Back
+                    </button>
+                    <button class="mdl-button mdl-js-button mdl-button--raised" id="confirmButton">
+                        Accept
+                    </button>
+                </div>
+            </div>
+        </div>
+    </main>
+</div>
+<script src="https://www.gstatic.com/firebasejs/8.3.2/firebase-app.js"></script>
+<!-- TODO: Add SDKs for Firebase products that you want to use
+   https://firebase.google.com/docs/web/setup#available-libraries -->
+<script src="https://www.gstatic.com/firebasejs/8.3.2/firebase-analytics.js"></script>
+<script src = "script/firebaseConfig.js"></script>
+<!-- FIREBASE STUFF I GOT FROM YT-->
+<script src="/__/firebase/7.18.0/firebase-app.js"></script>
+<script src="/__/firebase/8.3.3/firebase-firestore.js"></script>
+<script src="/__/firebase/7.18.0/firebase-auth.js"></script>
+<script src="/__/firebase/7.18.0/firebase-database.js"></script>
+<script src="/__/firebase/init.js?useEmulator=true"></script>
+
+<script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.2/jquery.min.js" type="text/javascript"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.6.2/js/bootstrap-select.min.js" type="text/javascript"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" type="text/javascript"></script>
+<script src ="script/explanatoryStatement_en_short_Uploader.js"></script>
+<script src ="script/explanatoryStatement_zh_CN_short_Uploader.js"></script>
+<script src ="script/explanatoryStatement_ms_short_Uploader.js"></script>
+<script src ="script/explanatoryStatement_th_short_Uploader.js"></script>
+<script src ="script/explanatoryStatementPage.js"></script>
+<script src="script/translation.js"></script>
+</body>
+</html>
